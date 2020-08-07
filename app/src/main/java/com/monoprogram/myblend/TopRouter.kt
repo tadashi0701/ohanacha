@@ -1,25 +1,27 @@
 package com.monoprogram.myblend
 
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.monoprogram.myblend.create.CreateBlendFragment
 import com.monoprogram.myblend.top.TopFragment
-import dagger.Component
-import dagger.Module
-import dagger.Provides
-import java.security.AccessControlContext
 import javax.inject.Inject
 
-@Component
 interface TopRoute {
     fun showTopFragment()
+    fun showCreateBledFragment()
 }
 
-@Module
 class TopRouter @Inject constructor(
-    private var context: AccessControlContext
-) : TopRoute, AppCompatActivity() {
-    @Provides
+) : TopRoute, Fragment() {
+
     override fun showTopFragment() {
-        supportFragmentManager.beginTransaction().add(TopFragment(), "").commit()
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.add(R.id.container, TopFragment())
+            ?.commit()
     }
 
+    override fun showCreateBledFragment() {
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.add(R.id.container, CreateBlendFragment())
+            ?.commit()
+    }
 }
