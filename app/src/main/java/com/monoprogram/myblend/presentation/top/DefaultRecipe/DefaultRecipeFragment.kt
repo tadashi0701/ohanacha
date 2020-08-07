@@ -30,6 +30,18 @@ class DefaultRecipeFragment : Fragment() {
             activity?.supportFragmentManager?.beginTransaction()
                 ?.add(R.id.container, DefaultRecipeDetailFragment())?.commit()
         }
+        binding.default2.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.add(R.id.container, DefaultRecipeDetailFragment())?.commit()
+        }
+        binding.default3.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.add(R.id.container, DefaultRecipeDetailFragment())?.commit()
+        }
+        binding.default4.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.add(R.id.container, DefaultRecipeDetailFragment())?.commit()
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
