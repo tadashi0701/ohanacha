@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.create
+package com.monoprogram.myblend.presentation.top.MyRecipe
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.monoprogram.myblend.R
 
-class CreateBlendFragment : Fragment() {
+class MyRecipeFragment : Fragment() {
 
     companion object {
-        fun newInstance() = CreateBlendFragment()
+        fun newInstance() = MyRecipeFragment()
     }
 
-    private lateinit var viewModel: CreateBlendViewModel
+    private lateinit var viewModel: MyRecipeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.create_blend_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_my_recipe, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CreateBlendViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(MyRecipeViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

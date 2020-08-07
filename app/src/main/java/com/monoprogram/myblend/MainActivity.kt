@@ -2,7 +2,7 @@ package com.monoprogram.myblend
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.monoprogram.myblend.top.TopFragment
+import com.monoprogram.myblend.presentation.top.TopFragment
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.top
+package com.monoprogram.myblend.presentation.top
 
 import androidx.lifecycle.ViewModel
 

@@ -1,9 +1,8 @@
 package com.monoprogram.myblend
 
-import android.content.Context
 import com.beeete2.android.examples.dagger2.di.AppModule
-import com.monoprogram.myblend.di.AppComponent
-import com.monoprogram.myblend.di.DaggerAppComponent
+import com.monoprogram.myblend.presentation.top.di.AppComponent
+import com.monoprogram.myblend.presentation.top.di.DaggerAppComponent
 
 @Suppress("DEPRECATION")
 class Application : android.app.Application() {

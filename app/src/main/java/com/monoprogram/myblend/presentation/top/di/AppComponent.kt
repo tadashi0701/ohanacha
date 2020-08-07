@@ -1,8 +1,8 @@
-package com.monoprogram.myblend.di
+package com.monoprogram.myblend.presentation.top.di
 
 import com.beeete2.android.examples.dagger2.di.AppModule
 import com.monoprogram.myblend.MainActivity
-import com.monoprogram.myblend.top.TopFragment
+import com.monoprogram.myblend.presentation.top.TopFragment
 import dagger.Component
 import javax.inject.Singleton
 
