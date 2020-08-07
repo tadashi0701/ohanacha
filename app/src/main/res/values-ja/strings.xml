@@ -3,4 +3,5 @@
     <string name="myBlend">マイブレンド</string>
     <string name="default_recipe">定番レシピ</string>
     <string name="my_recipe">マイレシピ</string>
+    <string name="msg_create_my_recipe">マイレシピを作成してください。</string>
 </resources>
