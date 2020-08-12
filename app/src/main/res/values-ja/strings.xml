@@ -5,4 +5,5 @@
     <string name="my_recipe">マイレシピ</string>
     <string name="msg_create_my_recipe">マイレシピを作成してください。</string>
     <string name="recipe_description">定番レシピの説明</string>
+    <string name="select_base_herb">ベースハーブを選択して下さい。</string>
 </resources>
