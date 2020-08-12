@@ -3,7 +3,7 @@ package com.monoprogram.myblend
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.monoprogram.myblend.presentation.top.DefaultRecipe.DefaultRecipeDetailFragment
+import com.monoprogram.myblend.presentation.top.defaultrecipe.DefaultRecipeDetailFragment
 import com.monoprogram.myblend.presentation.top.TopFragment
 import javax.inject.Inject
 

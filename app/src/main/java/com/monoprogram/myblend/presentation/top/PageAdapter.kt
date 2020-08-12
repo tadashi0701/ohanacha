@@ -5,8 +5,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.monoprogram.myblend.Application
 import com.monoprogram.myblend.R
-import com.monoprogram.myblend.presentation.top.DefaultRecipe.DefaultRecipeFragment
-import com.monoprogram.myblend.presentation.top.MyRecipe.MyRecipeFragment
+import com.monoprogram.myblend.presentation.top.defaultrecipe.DefaultRecipeFragment
+import com.monoprogram.myblend.presentation.top.myrecipe.MyRecipeFragment
 
 @Suppress("DEPRECATION")
 class PageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {

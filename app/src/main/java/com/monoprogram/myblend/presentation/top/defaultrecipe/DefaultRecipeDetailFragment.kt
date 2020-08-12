@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.DefaultRecipe
+package com.monoprogram.myblend.presentation.top.defaultrecipe
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,12 +9,25 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
 import com.monoprogram.myblend.databinding.FragmentDefaultRecipeDetailBinding
-import java.lang.String
-import java.util.*
+
 
 class DefaultRecipeDetailFragment : Fragment() {
 
-    private val dataSet = arrayOfNulls<kotlin.String>(20)
+    private val names = arrayListOf(
+        "chamomile", "jasmine", "lavendar",
+        "lemongrass", "mint", "rosemary",
+        "sage", "thyme"
+    )
+
+    private val values = arrayListOf(
+        1, 2, 3, 4, 5, 6, 7, 8
+    )
+
+    private val photos = arrayListOf(
+        R.drawable.chamomile, R.drawable.jasmine, R.drawable.lavendar,
+        R.drawable.lemongrass, R.drawable.mint, R.drawable.rosemary,
+        R.drawable.sage, R.drawable.thyme
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,14 +45,8 @@ class DefaultRecipeDetailFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.my_recycler_view)
         recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(activity);
+        recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        var i = 0
-        while (i < 20) {
-            dataSet[i] = String.format(Locale.ENGLISH, "Data_0%d", i)
-            i++
-        }
-
-        recyclerView.adapter = RecipeAdapter(dataSet)
+        recyclerView.adapter = RecipeAdapter(photos, names, values)
     }
 }

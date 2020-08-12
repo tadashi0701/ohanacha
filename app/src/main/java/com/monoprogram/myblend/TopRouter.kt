@@ -1,7 +1,7 @@
 package com.monoprogram.myblend
 
 import androidx.appcompat.app.AppCompatActivity
-import com.monoprogram.myblend.presentation.top.MyRecipe.MyRecipeFragment
+import com.monoprogram.myblend.presentation.top.myrecipe.MyRecipeFragment
 import com.monoprogram.myblend.presentation.top.TopFragment
 import javax.inject.Inject
 
