@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
     private fun initHerbInfo() {
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.Default) {
+                if (dao.getAll().isNotEmpty()) return@withContext
                 names.forEachIndexed { index, name ->
                     dao.insert(Herb(0, name, "香りが良い", photos[index]))
                 }

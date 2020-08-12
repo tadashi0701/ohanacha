@@ -46,7 +46,8 @@ class DefaultRecipeDetailFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.my_recycler_view)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(activity)
+        
+        recyclerView.adapter = DefaultRecipeAdapter(photos, names, values)
 
-        recyclerView.adapter = MyRecipeBaseAdapter(photos, names, values)
     }
 }

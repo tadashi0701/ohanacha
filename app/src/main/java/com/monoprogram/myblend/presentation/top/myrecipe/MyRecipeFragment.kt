@@ -27,7 +27,8 @@ class MyRecipeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = FragmentMyRecipeBinding.bind(view)
         binding.btnCreateRecipe.setOnClickListener {
-
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.add(R.id.container, MyRecipeBaseFragment())?.commit()
         }
     }
 
