@@ -11,10 +11,6 @@ import com.monoprogram.myblend.databinding.FragmentDefaultRecipeBinding
 
 class DefaultRecipeFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = DefaultRecipeFragment()
-    }
-
     private lateinit var viewModel: DefaultRecipeViewModel
 
     override fun onCreateView(

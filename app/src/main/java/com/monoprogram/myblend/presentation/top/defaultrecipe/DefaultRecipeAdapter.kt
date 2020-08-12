@@ -10,12 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
 
 
-class RecipeAdapter internal constructor(
+class DefaultRecipeAdapter internal constructor(
     private var itemImages: ArrayList<Int>,
     private var itemNames: ArrayList<String>,
     private var itemValues: ArrayList<Int>
 ) :
-    RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
+    RecyclerView.Adapter<DefaultRecipeAdapter.ViewHolder>() {
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var imageView: ImageView = v.findViewById(R.id.image_view)

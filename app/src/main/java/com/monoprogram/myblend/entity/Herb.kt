@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "herb")
 data class Herb(
     @PrimaryKey(autoGenerate = true) val id: Int,
-    @ColumnInfo(name = "first_name") val firstName: String?,
-    @ColumnInfo(name = "last_name") val lastName: String?
+    @ColumnInfo(name = "name") val herbName: String,
+    @ColumnInfo(name = "description") val description: String,
+    @ColumnInfo(name = "image_resource") val imageId: Int
 )
