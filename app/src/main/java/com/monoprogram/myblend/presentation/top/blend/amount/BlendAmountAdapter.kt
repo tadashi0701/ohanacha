@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.defaultrecipe
+package com.monoprogram.myblend.presentation.top.blend.amount
 
 import android.view.LayoutInflater
 import android.view.View
@@ -37,13 +37,13 @@ class BlendAmountAdapter internal constructor(
             .inflate(R.layout.my_text_item, parent, false)
 
         // set the view's size, margins, paddings and layout parameters
-        return ViewHolder(view)
+        return ViewHolder(
+            view
+        )
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
         holder.imageView.setImageResource(herbInfo[position].imageId)
         holder.textView.text = herbInfo[position].herbName
         holder.seekBar.progress = itemValues[position]

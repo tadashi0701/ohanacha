@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.myrecipe
+package com.monoprogram.myblend.presentation.top.blend.myblend
 
 import android.view.LayoutInflater
 import android.view.View
@@ -29,7 +29,9 @@ class MyBlendAdapter internal constructor(
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.my_recipe_base_item, parent, false)
 
-        return ViewHolder(view)
+        return ViewHolder(
+            view
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.defaultrecipe
+package com.monoprogram.myblend.presentation.top.blend
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,15 +11,36 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DefaultRecipeViewModel : ViewModel() {
+class MyRecipeViewModel : ViewModel() {
 
     val herbInfo: LiveData<List<Herb>> get() = _herbInfo
+    val blendInfo: LiveData<List<Blend>> get() = _blendInfo
     val defaultRecipe: LiveData<List<Pair<String, Int>>> get() = _defaultRecipe
-    private val _herbInfo = MutableLiveData<List<Herb>>()
-    private val _defaultRecipe = MutableLiveData<List<Pair<String, Int>>>()
+
     private val herbDao = Application.database.herbDao()
     private val blendDao = Application.database.blendDao()
+
+    private val _herbInfo = MutableLiveData<List<Herb>>()
+    private val _blendInfo = MutableLiveData<List<Blend>>()
+    private val _defaultRecipe = MutableLiveData<List<Pair<String, Int>>>()
+    private val _needsBlendInfo = MutableLiveData<Boolean>()
     private val selectList: ArrayList<Herb> = arrayListOf()
+
+    fun onCreateHerbInfo() {
+        CoroutineScope(Dispatchers.Main).launch {
+            withContext(Dispatchers.Default) {
+                _herbInfo.postValue(herbDao.getAll())
+            }
+        }
+    }
+
+    fun onUpdateBlendInfo() {
+        CoroutineScope(Dispatchers.Main).launch {
+            withContext(Dispatchers.Default) {
+                _blendInfo.postValue(blendDao.getAll())
+            }
+        }
+    }
 
     private val defaultRecipe1: ArrayList<Pair<String, Int>> = arrayListOf(
         Pair("chamomile", 0), Pair("jasmine", 1), Pair("jasmine", 2)
@@ -58,9 +79,8 @@ class DefaultRecipeViewModel : ViewModel() {
         val value = valueList.joinToString(",")
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.Default) {
-                blendDao.insert(Blend(0, "test", herb, value))
+                blendDao.insert(Blend(0, "test_" + blendDao.getAll().size, herb, value))
             }
         }
     }
-
 }

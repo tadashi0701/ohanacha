@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.myrecipe
+package com.monoprogram.myblend.presentation.top.blend.myblend
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
 import com.monoprogram.myblend.databinding.FragmentMyBlendBinding
 import com.monoprogram.myblend.entity.Herb
-import com.monoprogram.myblend.presentation.top.defaultrecipe.BlendAmountFragment
+import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
+import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
 
 class MyBlendFragment : Fragment() {
 
@@ -57,15 +58,22 @@ class MyBlendFragment : Fragment() {
             activity?.supportFragmentManager?.beginTransaction()
                 ?.add(
                     R.id.container,
-                    BlendAmountFragment.newInstance(selectList, valueList)
+                    BlendAmountFragment.newInstance(
+                        selectList,
+                        valueList
+                    )
                 )?.commit()
+            activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
     }
 
     private fun createAdapter(herbInfo: List<Herb>) {
         val recyclerView =
             view?.findViewById<RecyclerView>(R.id.base_recycler_view) ?: return
-        val adapter = MyBlendAdapter(herbInfo)
+        val adapter =
+            MyBlendAdapter(
+                herbInfo
+            )
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter

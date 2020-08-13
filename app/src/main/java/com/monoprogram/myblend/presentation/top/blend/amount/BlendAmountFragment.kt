@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.defaultrecipe
+package com.monoprogram.myblend.presentation.top.blend.amount
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,11 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
 import com.monoprogram.myblend.databinding.FragmentBlendAmountBinding
 import com.monoprogram.myblend.entity.Herb
+import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
+import com.monoprogram.myblend.presentation.top.blend.top.MyRecipeFragment
 
 
 class BlendAmountFragment : Fragment() {
 
-    private lateinit var viewModel: DefaultRecipeViewModel
+    private lateinit var viewModel: MyRecipeViewModel
     private lateinit var binding: FragmentBlendAmountBinding
 
     private var herbList: ArrayList<String> = arrayListOf()
@@ -44,7 +46,7 @@ class BlendAmountFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(DefaultRecipeViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(MyRecipeViewModel::class.java)
 
         viewModel.onSelectedHerbList(herbList)
 
@@ -69,7 +71,11 @@ class BlendAmountFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        val adapter = BlendAmountAdapter(herbInfo, valueList)
+        val adapter =
+            BlendAmountAdapter(
+                herbInfo,
+                valueList
+            )
         recyclerView.adapter = adapter
 
         adapter.setOnSeekBarChangeListener(object : BlendAmountAdapter.OnSeekBarChangeListener {
@@ -85,12 +91,13 @@ class BlendAmountFragment : Fragment() {
 
         @JvmStatic
         fun newInstance(param1: ArrayList<String>, param2: ArrayList<Int>) =
-            BlendAmountFragment().apply {
-                arguments = Bundle().apply {
-                    putStringArrayList(HERB_LIST, param1)
-                    putIntegerArrayList(VALUE_LIST, param2)
+            BlendAmountFragment()
+                .apply {
+                    arguments = Bundle().apply {
+                        putStringArrayList(HERB_LIST, param1)
+                        putIntegerArrayList(VALUE_LIST, param2)
+                    }
                 }
-            }
     }
 
 }

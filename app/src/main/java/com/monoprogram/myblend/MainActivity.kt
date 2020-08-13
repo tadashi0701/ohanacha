@@ -4,9 +4,9 @@ package com.monoprogram.myblend
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.monoprogram.myblend.entity.Herb
-import com.monoprogram.myblend.presentation.top.TopFragment
-import com.monoprogram.myblend.presentation.top.defaultrecipe.BlendAmountFragment
-import com.monoprogram.myblend.presentation.top.myrecipe.MyBlendFragment
+import com.monoprogram.myblend.presentation.top.blend.top.TopFragment
+import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
+import com.monoprogram.myblend.presentation.top.blend.myblend.MyBlendFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -36,7 +36,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Application.component.inject(this)
         //router.showTopFragment() -> 期待通りにrouterが動作しない為、一旦コメントアウト
-        supportFragmentManager.beginTransaction().add(R.id.container, TopFragment()).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container,
+            TopFragment()
+        ).commit()
 
         // DB情報の初期化
         initHerbInfo()

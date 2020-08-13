@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.defaultrecipe
+package com.monoprogram.myblend.presentation.top.blend.top
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,10 +9,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.monoprogram.myblend.R
 import com.monoprogram.myblend.databinding.FragmentDefaultRecipeBinding
+import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
+import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
 
 class DefaultRecipeFragment : Fragment() {
 
-    private lateinit var viewModel: DefaultRecipeViewModel
+    private lateinit var viewModel: MyRecipeViewModel
     private lateinit var binding: FragmentDefaultRecipeBinding
 
     override fun onCreateView(
@@ -28,7 +30,7 @@ class DefaultRecipeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(DefaultRecipeViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(MyRecipeViewModel::class.java)
         binding.default1.setOnClickListener {
             viewModel.onClickedDefault(1)
         }

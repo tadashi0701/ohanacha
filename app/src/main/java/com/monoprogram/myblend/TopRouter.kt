@@ -1,8 +1,8 @@
 package com.monoprogram.myblend
 
 import androidx.appcompat.app.AppCompatActivity
-import com.monoprogram.myblend.presentation.top.myrecipe.MyRecipeFragment
-import com.monoprogram.myblend.presentation.top.TopFragment
+import com.monoprogram.myblend.presentation.top.blend.top.MyRecipeFragment
+import com.monoprogram.myblend.presentation.top.blend.top.TopFragment
 import javax.inject.Inject
 
 interface TopRoute {
@@ -15,13 +15,17 @@ class TopRouter @Inject constructor(
 
     override fun showTopFragment() {
         supportFragmentManager.beginTransaction()
-            .add(R.id.container, TopFragment())
+            .add(R.id.container,
+                TopFragment()
+            )
             .commit()
     }
 
     override fun showCreateBledFragment() {
         supportFragmentManager.beginTransaction()
-            .add(R.id.container, MyRecipeFragment())
+            .add(R.id.container,
+                MyRecipeFragment()
+            )
             .commit()
     }
 }
