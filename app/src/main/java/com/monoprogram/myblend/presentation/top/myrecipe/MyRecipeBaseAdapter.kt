@@ -19,6 +19,7 @@ class MyRecipeBaseAdapter internal constructor(
         var imageView: ImageView = v.findViewById(R.id.image_view)
         var textView: TextView = v.findViewById(R.id.text_view)
         var description: TextView = v.findViewById(R.id.text_herb_description)
+        var selected: ImageView = v.findViewById(R.id.select_herb)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,6 +33,10 @@ class MyRecipeBaseAdapter internal constructor(
         holder.imageView.setImageResource(herbInfo[position].imageId)
         holder.textView.text = herbInfo[position].herbName
         holder.description.text = herbInfo[position].description
+
+        holder.selected.setOnClickListener {
+            it.isSelected = !it.isSelected
+        }
     }
 
     override fun getItemCount(): Int {

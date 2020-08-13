@@ -5,17 +5,26 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:id="@+id/select_herb"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:src="@drawable/select_herb"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
         android:id="@+id/image_view"
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_margin="2dp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/select_herb"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
     android:id="@+id/text_view"
     android:layout_width="wrap_content"
-    android:layout_height="50dp"
+    android:layout_height="wrap_content"
     app:layout_constraintLeft_toRightOf="@+id/image_view"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
@@ -24,7 +33,7 @@
     <TextView
         android:id="@+id/text_herb_description"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@+id/image_view"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view"
