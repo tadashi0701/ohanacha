@@ -10,10 +10,10 @@ import com.monoprogram.myblend.R
 import com.monoprogram.myblend.entity.Herb
 
 
-class MyRecipeBaseAdapter internal constructor(
+class MyBlendAdapter internal constructor(
     private var herbInfo: List<Herb>
 ) :
-    RecyclerView.Adapter<MyRecipeBaseAdapter.ViewHolder>() {
+    RecyclerView.Adapter<MyBlendAdapter.ViewHolder>() {
 
     // リスナー格納変数
     lateinit var listener: OnItemClickListener

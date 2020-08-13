@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.monoprogram.myblend.entity.Herb
 import com.monoprogram.myblend.presentation.top.TopFragment
-import com.monoprogram.myblend.presentation.top.defaultrecipe.DefaultRecipeDetailFragment
-import com.monoprogram.myblend.presentation.top.myrecipe.MyRecipeBaseFragment
+import com.monoprogram.myblend.presentation.top.defaultrecipe.BlendAmountFragment
+import com.monoprogram.myblend.presentation.top.myrecipe.MyBlendFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -45,10 +45,10 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.container) ?: return
         when {
-            fragment is DefaultRecipeDetailFragment -> {
+            fragment is BlendAmountFragment -> {
                 supportFragmentManager.beginTransaction().remove(fragment).commit()
             }
-            fragment is MyRecipeBaseFragment -> {
+            fragment is MyBlendFragment -> {
                 supportFragmentManager.beginTransaction().remove(fragment).commit()
             }
             else -> {

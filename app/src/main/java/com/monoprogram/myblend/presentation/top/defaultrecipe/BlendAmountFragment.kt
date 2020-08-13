@@ -10,25 +10,23 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
-import com.monoprogram.myblend.databinding.FragmentDefaultRecipeDetailBinding
+import com.monoprogram.myblend.databinding.FragmentBlendAmountBinding
 import com.monoprogram.myblend.entity.Herb
 
 
-class DefaultRecipeDetailFragment : Fragment() {
+class BlendAmountFragment : Fragment() {
 
     private lateinit var viewModel: DefaultRecipeViewModel
+    private lateinit var binding: FragmentBlendAmountBinding
 
-    private val values = arrayListOf(
-        1, 2, 3, 4, 5, 6, 7, 8
-    )
-
-    // TODO: Rename and change types of parameters
     private var herbList: ArrayList<String> = arrayListOf()
+    private var valueList: ArrayList<Int> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             herbList = it.getStringArrayList(HERB_LIST) as ArrayList<String>
+            valueList = it.getIntegerArrayList(VALUE_LIST) as ArrayList<Int>
         }
     }
 
@@ -37,25 +35,33 @@ class DefaultRecipeDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_default_recipe_detail, container, false)
+        return inflater.inflate(R.layout.fragment_blend_amount, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val binding = FragmentDefaultRecipeDetailBinding.bind(view)
-        binding.btnBack.setOnClickListener {
-            activity?.onBackPressed()
-        }
+        binding = FragmentBlendAmountBinding.bind(view)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(DefaultRecipeViewModel::class.java)
 
+        viewModel.onSelectedHerbList(herbList)
+
         viewModel.herbInfo.observe(viewLifecycleOwner, Observer {
             createAdapter(it)
         })
 
-        viewModel.onSelectedHerbList(herbList)
+        // 戻るボタン
+        binding.btnBack.setOnClickListener {
+            activity?.onBackPressed()
+        }
+
+        // ブレンド保存ボタン
+        binding.btnComp.setOnClickListener {
+            viewModel.onClickedSave(herbList, valueList)
+            activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
+        }
     }
 
     private fun createAdapter(herbInfo: List<Herb>) {
@@ -63,17 +69,26 @@ class DefaultRecipeDetailFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        recyclerView.adapter = DefaultRecipeAdapter(herbInfo, values)
+        val adapter = BlendAmountAdapter(herbInfo, valueList)
+        recyclerView.adapter = adapter
+
+        adapter.setOnSeekBarChangeListener(object : BlendAmountAdapter.OnSeekBarChangeListener {
+            override fun OnSeekBarChangeListener(position: Int, value: Int) {
+                valueList[position] = value
+            }
+        })
     }
 
     companion object {
         const val HERB_LIST = "herb_list"
+        const val VALUE_LIST = "value_list"
 
         @JvmStatic
-        fun newInstance(param1: ArrayList<String>) =
-            DefaultRecipeDetailFragment().apply {
+        fun newInstance(param1: ArrayList<String>, param2: ArrayList<Int>) =
+            BlendAmountFragment().apply {
                 arguments = Bundle().apply {
                     putStringArrayList(HERB_LIST, param1)
+                    putIntegerArrayList(VALUE_LIST, param2)
                 }
             }
     }

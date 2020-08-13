@@ -10,13 +10,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
-import com.monoprogram.myblend.databinding.FragmentMyRecipeBaseBinding
+import com.monoprogram.myblend.databinding.FragmentMyBlendBinding
 import com.monoprogram.myblend.entity.Herb
-import com.monoprogram.myblend.presentation.top.defaultrecipe.DefaultRecipeDetailFragment
+import com.monoprogram.myblend.presentation.top.defaultrecipe.BlendAmountFragment
 
-class MyRecipeBaseFragment : Fragment() {
+class MyBlendFragment : Fragment() {
 
-    private lateinit var binding: FragmentMyRecipeBaseBinding
+    private lateinit var binding: FragmentMyBlendBinding
     private lateinit var viewModel: MyRecipeViewModel
     private var selectList: ArrayList<String> = arrayListOf()
 
@@ -24,31 +24,40 @@ class MyRecipeBaseFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_my_recipe_base, container, false)
+        return inflater.inflate(R.layout.fragment_my_blend, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding = FragmentMyRecipeBaseBinding.bind(view)
-        binding.btnBack.setOnClickListener {
-            activity?.onBackPressed()
-        }
+        binding = FragmentMyBlendBinding.bind(view)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MyRecipeViewModel::class.java)
 
+        // ハーブ情報を生成する(名前とか説明)
+        viewModel.onCreateHerbInfo()
+
         viewModel.herbInfo.observe(viewLifecycleOwner, Observer {
+            // ハーブ情報をもとにRecyclerViewを生成する
             createAdapter(it)
         })
 
-        viewModel.onUpdateHerbInfo()
+        // 戻るボタン検知
+        binding.btnBack.setOnClickListener {
+            activity?.onBackPressed()
+        }
 
-        binding.btnComp.setOnClickListener {
+        // 進むボタン検知
+        binding.btnNext.setOnClickListener {
+            val valueList: ArrayList<Int> = arrayListOf()
+            selectList.forEach { _ ->
+                valueList.add(0)
+            }
             activity?.supportFragmentManager?.beginTransaction()
                 ?.add(
                     R.id.container,
-                    DefaultRecipeDetailFragment.newInstance(selectList)
+                    BlendAmountFragment.newInstance(selectList, valueList)
                 )?.commit()
         }
     }
@@ -56,12 +65,12 @@ class MyRecipeBaseFragment : Fragment() {
     private fun createAdapter(herbInfo: List<Herb>) {
         val recyclerView =
             view?.findViewById<RecyclerView>(R.id.base_recycler_view) ?: return
-        val adapter = MyRecipeBaseAdapter(herbInfo)
+        val adapter = MyBlendAdapter(herbInfo)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
 
-        adapter.setOnItemClickListener(object : MyRecipeBaseAdapter.OnItemClickListener {
+        adapter.setOnItemClickListener(object : MyBlendAdapter.OnItemClickListener {
             override fun onItemClickListener(herbName: String, needsAdd: Boolean) {
                 selectList.find { it == herbName }.also {
                     if (needsAdd) {
@@ -71,7 +80,6 @@ class MyRecipeBaseFragment : Fragment() {
                         selectList.remove(herbName)
                     }
                 }
-
             }
         })
     }

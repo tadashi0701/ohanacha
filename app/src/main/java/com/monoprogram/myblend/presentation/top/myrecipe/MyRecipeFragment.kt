@@ -28,14 +28,13 @@ class MyRecipeFragment : Fragment() {
         val binding = FragmentMyRecipeBinding.bind(view)
         binding.btnCreateRecipe.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()
-                ?.add(R.id.container, MyRecipeBaseFragment())?.commit()
+                ?.add(R.id.container, MyBlendFragment())?.commit()
         }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MyRecipeViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }

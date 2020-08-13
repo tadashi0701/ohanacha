@@ -43,10 +43,16 @@ class DefaultRecipeFragment : Fragment() {
         }
 
         viewModel.defaultRecipe.observe(viewLifecycleOwner, Observer {
+            val herbList: ArrayList<String> = arrayListOf()
+            val valueList: ArrayList<Int> = arrayListOf()
+            it.forEach { blend ->
+                herbList.add(blend.first)
+                valueList.add(blend.second)
+            }
             activity?.supportFragmentManager?.beginTransaction()
                 ?.add(
                     R.id.container,
-                    DefaultRecipeDetailFragment.newInstance(it as ArrayList<String>)
+                    BlendAmountFragment.newInstance(herbList, valueList)
                 )?.commit()
         })
 

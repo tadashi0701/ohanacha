@@ -18,7 +18,7 @@ class MyRecipeViewModel : ViewModel() {
     private val _herbInfo = MutableLiveData<List<Herb>>()
     private var selectList: ArrayList<String> = arrayListOf()
 
-    fun onUpdateHerbInfo() {
+    fun onCreateHerbInfo() {
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.Default) {
                 _herbInfo.postValue(dao.getAll())

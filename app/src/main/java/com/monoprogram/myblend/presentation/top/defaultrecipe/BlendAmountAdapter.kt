@@ -11,11 +11,18 @@ import com.monoprogram.myblend.R
 import com.monoprogram.myblend.entity.Herb
 
 
-class DefaultRecipeAdapter internal constructor(
+class BlendAmountAdapter internal constructor(
     private var herbInfo: List<Herb>,
     private var itemValues: ArrayList<Int>
 ) :
-    RecyclerView.Adapter<DefaultRecipeAdapter.ViewHolder>() {
+    RecyclerView.Adapter<BlendAmountAdapter.ViewHolder>() {
+
+    lateinit var listener: OnSeekBarChangeListener
+    private var amountList: ArrayList<Herb> = arrayListOf()
+
+    init {
+        amountList = herbInfo as ArrayList<Herb>
+    }
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var imageView: ImageView = v.findViewById(R.id.image_view)
@@ -40,6 +47,30 @@ class DefaultRecipeAdapter internal constructor(
         holder.imageView.setImageResource(herbInfo[position].imageId)
         holder.textView.text = herbInfo[position].herbName
         holder.seekBar.progress = itemValues[position]
+
+        holder.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                listener.OnSeekBarChangeListener(holder.adapterPosition, p1)
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+                // nop
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+                // nop
+            }
+
+        })
+    }
+
+    //インターフェースの作成
+    interface OnSeekBarChangeListener {
+        fun OnSeekBarChangeListener(position: Int, value: Int)
+    }
+
+    fun setOnSeekBarChangeListener(listener: OnSeekBarChangeListener) {
+        this.listener = listener
     }
 
     // Return the size of your dataset (invoked by the layout manager)

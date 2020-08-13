@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".presentation.top.myrecipe.MyRecipeBaseFragment">
+    tools:context=".presentation.top.myrecipe.MyBlendFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header_view"
@@ -34,11 +34,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/btn_comp"
+            android:id="@+id/btn_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:src="@mipmap/icon_comp"
+            android:src="@mipmap/icon_next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
