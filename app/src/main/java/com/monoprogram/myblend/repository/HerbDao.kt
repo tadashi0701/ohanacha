@@ -20,6 +20,6 @@ interface HerbDao {
     @Query("select * from herb")
     fun getAll(): List<Herb>
 
-    @Query("select * from herb where id = :id")
-    fun getUser(id: Int): Herb
+    @Query("select * from herb where name = :name")
+    fun getHerb(name: String): Herb
 }

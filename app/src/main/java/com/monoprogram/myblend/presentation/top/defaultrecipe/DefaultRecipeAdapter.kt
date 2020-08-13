@@ -8,11 +8,11 @@ import android.widget.SeekBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
+import com.monoprogram.myblend.entity.Herb
 
 
 class DefaultRecipeAdapter internal constructor(
-    private var itemImages: ArrayList<Int>,
-    private var itemNames: ArrayList<String>,
+    private var herbInfo: List<Herb>,
     private var itemValues: ArrayList<Int>
 ) :
     RecyclerView.Adapter<DefaultRecipeAdapter.ViewHolder>() {
@@ -37,14 +37,14 @@ class DefaultRecipeAdapter internal constructor(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.imageView.setImageResource(itemImages[position])
-        holder.textView.text = itemNames[position]
-        holder.seekBar.setProgress(itemValues[position])
+        holder.imageView.setImageResource(herbInfo[position].imageId)
+        holder.textView.text = herbInfo[position].herbName
+        holder.seekBar.progress = itemValues[position]
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount(): Int {
-        return itemNames.size
+        return herbInfo.size
     }
 
 }

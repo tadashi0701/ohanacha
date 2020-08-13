@@ -15,6 +15,9 @@ class MyRecipeBaseAdapter internal constructor(
 ) :
     RecyclerView.Adapter<MyRecipeBaseAdapter.ViewHolder>() {
 
+    // リスナー格納変数
+    lateinit var listener: OnItemClickListener
+
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var imageView: ImageView = v.findViewById(R.id.image_view)
         var textView: TextView = v.findViewById(R.id.text_view)
@@ -36,11 +39,25 @@ class MyRecipeBaseAdapter internal constructor(
 
         holder.selected.setOnClickListener {
             it.isSelected = !it.isSelected
+            if (it.isSelected) listener.onItemClickListener(
+                holder.textView.text.toString(),
+                it.isSelected
+            )
         }
     }
 
     override fun getItemCount(): Int {
         return herbInfo.size
+    }
+
+    //インターフェースの作成
+    interface OnItemClickListener {
+        fun onItemClickListener(herbName: String, needsAdd: Boolean)
+    }
+
+    // リスナー
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
     }
 
 }

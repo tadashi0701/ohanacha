@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.monoprogram.myblend.R
 import com.monoprogram.myblend.databinding.FragmentDefaultRecipeBinding
@@ -12,6 +13,7 @@ import com.monoprogram.myblend.databinding.FragmentDefaultRecipeBinding
 class DefaultRecipeFragment : Fragment() {
 
     private lateinit var viewModel: DefaultRecipeViewModel
+    private lateinit var binding: FragmentDefaultRecipeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,28 +23,32 @@ class DefaultRecipeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val binding = FragmentDefaultRecipeBinding.bind(view)
-        binding.default1.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.add(R.id.container, DefaultRecipeDetailFragment())?.commit()
-        }
-        binding.default2.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.add(R.id.container, DefaultRecipeDetailFragment())?.commit()
-        }
-        binding.default3.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.add(R.id.container, DefaultRecipeDetailFragment())?.commit()
-        }
-        binding.default4.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.add(R.id.container, DefaultRecipeDetailFragment())?.commit()
-        }
+        binding = FragmentDefaultRecipeBinding.bind(view)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(DefaultRecipeViewModel::class.java)
+        binding.default1.setOnClickListener {
+            viewModel.onClickedDefault(1)
+        }
+        binding.default2.setOnClickListener {
+            viewModel.onClickedDefault(2)
+        }
+        binding.default3.setOnClickListener {
+            viewModel.onClickedDefault(3)
+        }
+        binding.default4.setOnClickListener {
+            viewModel.onClickedDefault(4)
+        }
+
+        viewModel.defaultRecipe.observe(viewLifecycleOwner, Observer {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.add(
+                    R.id.container,
+                    DefaultRecipeDetailFragment.newInstance(it as ArrayList<String>)
+                )?.commit()
+        })
 
     }
 
