@@ -13,7 +13,7 @@ import com.monoprogram.myblend.R
 import com.monoprogram.myblend.databinding.FragmentBlendAmountBinding
 import com.monoprogram.myblend.entity.Herb
 import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
-import com.monoprogram.myblend.presentation.top.blend.top.MyRecipeFragment
+import com.monoprogram.myblend.presentation.top.blend.top.TopFragment
 
 
 class BlendAmountFragment : Fragment() {
@@ -62,7 +62,10 @@ class BlendAmountFragment : Fragment() {
         // ブレンド保存ボタン
         binding.btnComp.setOnClickListener {
             viewModel.onClickedSave(herbList, valueList)
+            // ブレンド量調整の画面を削除する
             activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
+            // トップ画面を更新する
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container,TopFragment())?.commit()
         }
     }
 
