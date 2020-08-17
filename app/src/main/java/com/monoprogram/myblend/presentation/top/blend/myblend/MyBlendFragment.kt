@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
 import com.monoprogram.myblend.databinding.FragmentMyBlendBinding
 import com.monoprogram.myblend.entity.Herb
-import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
 import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
+import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
 
 class MyBlendFragment : Fragment() {
 
@@ -35,7 +35,6 @@ class MyBlendFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MyRecipeViewModel::class.java)
-
         // ハーブ情報を生成する(名前とか説明)
         viewModel.onCreateHerbInfo()
 
@@ -43,11 +42,6 @@ class MyBlendFragment : Fragment() {
             // ハーブ情報をもとにRecyclerViewを生成する
             createAdapter(it)
         })
-
-        // 戻るボタン検知
-        binding.btnBack.setOnClickListener {
-            activity?.onBackPressed()
-        }
 
         // 進むボタン検知
         binding.btnNext.setOnClickListener {
@@ -63,7 +57,6 @@ class MyBlendFragment : Fragment() {
                         valueList
                     )
                 )?.commit()
-            activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
     }
 

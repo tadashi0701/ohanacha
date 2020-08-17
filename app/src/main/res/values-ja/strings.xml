@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">MyBlend</string>
     <string name="myBlend">マイブレンド</string>
-    <string name="default_recipe">定番レシピ</string>
-    <string name="my_recipe">マイレシピ</string>
+    <string name="default_recipe">おすすめブレンド</string>
+    <string name="my_recipe">わたしのブレンド</string>
+    <string name="previous_recipe">過去のブレンド</string>
     <string name="msg_create_my_recipe">マイレシピを作成してください。</string>
     <string name="recipe_description">定番レシピの説明</string>
     <string name="select_base_herb">ベースハーブを選択して下さい。</string>

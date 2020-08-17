@@ -36,16 +36,22 @@
         app:layout_constraintTop_toBottomOf="@+id/main_image">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/my_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_recipe" />
+
+        <com.google.android.material.tabs.TabItem
             android:id="@+id/default_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/default_recipe" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/my_recipe"
+            android:id="@+id/previous_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/my_recipe" />
+            android:text="@string/default_recipe" />
     </com.google.android.material.tabs.TabLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,16 +15,43 @@ class MyRecipeViewModel : ViewModel() {
 
     val herbInfo: LiveData<List<Herb>> get() = _herbInfo
     val blendInfo: LiveData<List<Blend>> get() = _blendInfo
-    val defaultRecipe: LiveData<List<Pair<String, Int>>> get() = _defaultRecipe
+    val defaultBlend: LiveData<List<Blend>> get() = _defaultBlend
 
     private val herbDao = Application.database.herbDao()
     private val blendDao = Application.database.blendDao()
 
     private val _herbInfo = MutableLiveData<List<Herb>>()
     private val _blendInfo = MutableLiveData<List<Blend>>()
-    private val _defaultRecipe = MutableLiveData<List<Pair<String, Int>>>()
-    private val _needsBlendInfo = MutableLiveData<Boolean>()
+    private val _defaultBlend = MutableLiveData<List<Blend>>()
     private val selectList: ArrayList<Herb> = arrayListOf()
+
+    private val defaultInitRecipe: List<Blend> =
+        listOf(
+            Blend(
+                0,
+                "default1",
+                "Mint,Lemongrass,LemonVerbena,LemonMyrtle,RoseHip,Stevia",
+                "3,2,2,1,1,1"
+            ),
+            Blend(
+                0,
+                "default2",
+                "RoseHip,Hibiscus,Stevia",
+                "5,3,2"
+            ),
+            Blend(
+                0,
+                "default3",
+                "Mint,Lemongrass,LemonVerbena,LemonMyrtle,RoseHip,Stevia",
+                "3,2,2,1,1,1"
+            ),
+            Blend(
+                0,
+                "default4",
+                "RoseHip,Hibiscus,Stevia",
+                "5,3,2"
+            )
+        )
 
     fun onCreateHerbInfo() {
         CoroutineScope(Dispatchers.Main).launch {
@@ -42,16 +69,6 @@ class MyRecipeViewModel : ViewModel() {
         }
     }
 
-    private val defaultRecipe1: ArrayList<Pair<String, Int>> = arrayListOf(
-        Pair("chamomile", 0), Pair("jasmine", 1), Pair("jasmine", 2)
-    )
-
-    private val defaultRecipe2: ArrayList<Pair<String, Int>> = arrayListOf(
-        Pair("chamomile", 0), Pair("jasmine", 1), Pair("jasmine", 2),
-        Pair("lemongrass", 3), Pair("mint", 4), Pair("rosemary", 5),
-        Pair("sage", 6), Pair("thyme", 7)
-    )
-
     fun onSelectedHerbList(list: ArrayList<String>) {
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.Default) {
@@ -59,17 +76,6 @@ class MyRecipeViewModel : ViewModel() {
                     selectList.add(herbDao.getHerb(it))
                 }
                 _herbInfo.postValue(selectList)
-            }
-        }
-    }
-
-    fun onClickedDefault(defaultId: Int) {
-        when (defaultId) {
-            1 -> {
-                _defaultRecipe.postValue(defaultRecipe1)
-            }
-            else -> {
-                _defaultRecipe.postValue(defaultRecipe2)
             }
         }
     }
@@ -82,5 +88,9 @@ class MyRecipeViewModel : ViewModel() {
                 blendDao.insert(Blend(0, "test_" + blendDao.getAll().size, herb, value))
             }
         }
+    }
+
+    fun setDefaultRecipe() {
+        _defaultBlend.postValue(defaultInitRecipe)
     }
 }

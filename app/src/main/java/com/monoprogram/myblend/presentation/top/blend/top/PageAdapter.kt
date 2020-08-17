@@ -2,12 +2,10 @@ package com.monoprogram.myblend.presentation.top.blend.top
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.monoprogram.myblend.Application
 import com.monoprogram.myblend.R
-import com.monoprogram.myblend.presentation.top.blend.top.DefaultRecipeFragment
-import com.monoprogram.myblend.presentation.top.blend.top.MyRecipeFragment
+import com.monoprogram.myblend.presentation.top.blend.myblend.MyBlendFragment
 
 @Suppress("DEPRECATION")
 class PageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
@@ -15,30 +13,36 @@ class PageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         when (position) {
             // どのFragmentを表示するか
             0 -> {
-                return DefaultRecipeFragment()
+                return MyBlendFragment()
             }
             1 -> {
+                return DefaultRecipeFragment()
+            }
+            2 -> {
                 return MyRecipeFragment()
             }
             else -> {
-                return DefaultRecipeFragment()
+                return MyRecipeFragment()
             }
         }
     }
 
     // スワイプビューの数が2つだから
     override fun getCount(): Int {
-        return 2;
+        return 3;
     }
 
     // スワイプビューのタイトルを決める
     override fun getPageTitle(position: Int): CharSequence? {
         when (position) {
             0 -> {
-                return Application.instance.getString(R.string.default_recipe)
+                return Application.instance.getString(R.string.my_recipe)
             }
             1 -> {
-                return Application.instance.getString(R.string.my_recipe)
+                return Application.instance.getString(R.string.default_recipe)
+            }
+            2 -> {
+                return Application.instance.getString(R.string.previous_recipe)
             }
             else -> {
                 return null

@@ -30,20 +30,6 @@ class MyRecipeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentMyRecipeBinding.bind(view)
-        binding.btnCreateRecipe.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.add(
-                    R.id.container,
-                    MyBlendFragment()
-                )?.commit()
-        }
-        binding.fabCreateRecipe.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.add(
-                    R.id.container,
-                    MyBlendFragment()
-                )?.commit()
-        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -53,13 +39,9 @@ class MyRecipeFragment : Fragment() {
 
         viewModel.blendInfo.observe(viewLifecycleOwner, Observer {
             if (it.isEmpty()) {
-                binding.btnCreateRecipe.visibility = View.VISIBLE
                 binding.textCreateRecipe.visibility = View.VISIBLE
-                binding.fabCreateRecipe.visibility = View.INVISIBLE
             } else {
-                binding.btnCreateRecipe.visibility = View.INVISIBLE
                 binding.textCreateRecipe.visibility = View.INVISIBLE
-                binding.fabCreateRecipe.visibility = View.VISIBLE
                 createAdapter(it)
             }
         })
@@ -99,5 +81,4 @@ class MyRecipeFragment : Fragment() {
             }
         })
     }
-
 }

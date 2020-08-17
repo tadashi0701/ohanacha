@@ -4,9 +4,9 @@ package com.monoprogram.myblend
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.monoprogram.myblend.entity.Herb
-import com.monoprogram.myblend.presentation.top.blend.top.TopFragment
 import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
 import com.monoprogram.myblend.presentation.top.blend.myblend.MyBlendFragment
+import com.monoprogram.myblend.presentation.top.blend.top.TopFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,14 +21,27 @@ class MainActivity : AppCompatActivity() {
     private val dao = Application.database.herbDao()
 
     private val names = arrayListOf(
-        "chamomile", "jasmine", "lavendar",
-        "lemongrass", "mint", "rosemary",
-        "sage", "thyme"
+        "RoseHip",
+        "Hibiscus",
+        "Lemongrass",
+        "Heath",
+        "Bardock",
+        "Stevia",
+        "LemonPeople",
+        "LemonMyrtle",
+        "Rooibos",
+        "Chamomile",
+        "Mint",
+        "Raspberry",
+        "LemonVerbena",
+        "DandyLion"
     )
     private val photos = arrayListOf(
-        R.drawable.chamomile, R.drawable.jasmine, R.drawable.lavendar,
-        R.drawable.lemongrass, R.drawable.mint, R.drawable.rosemary,
-        R.drawable.sage, R.drawable.thyme
+        R.drawable.rosehip, R.drawable.hibiscus, R.drawable.lemongrass,
+        R.drawable.heath, R.drawable.bardock, R.drawable.stebia,
+        R.drawable.lemonpeople, R.drawable.lemonmyrtle, R.drawable.rooibos,
+        R.drawable.camomile, R.drawable.mint, R.drawable.raspberry, R.drawable.lemonverbena,
+        R.drawable.dandylion
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +49,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Application.component.inject(this)
         //router.showTopFragment() -> 期待通りにrouterが動作しない為、一旦コメントアウト
-        supportFragmentManager.beginTransaction().add(R.id.container,
+        supportFragmentManager.beginTransaction().add(
+            R.id.container,
             TopFragment()
         ).commit()
 
@@ -48,9 +62,6 @@ class MainActivity : AppCompatActivity() {
         val fragment = supportFragmentManager.findFragmentById(R.id.container) ?: return
         when {
             fragment is BlendAmountFragment -> {
-                supportFragmentManager.beginTransaction().remove(fragment).commit()
-            }
-            fragment is MyBlendFragment -> {
                 supportFragmentManager.beginTransaction().remove(fragment).commit()
             }
             else -> {
@@ -66,7 +77,6 @@ class MainActivity : AppCompatActivity() {
                 names.forEachIndexed { index, name ->
                     dao.insert(Herb(0, name, "香りが良い", photos[index]))
                 }
-
             }
         }
     }

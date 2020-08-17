@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
 import com.monoprogram.myblend.databinding.FragmentDefaultRecipeBinding
+import com.monoprogram.myblend.entity.Blend
 import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
 import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
 
@@ -31,33 +34,42 @@ class DefaultRecipeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MyRecipeViewModel::class.java)
-        binding.default1.setOnClickListener {
-            viewModel.onClickedDefault(1)
-        }
-        binding.default2.setOnClickListener {
-            viewModel.onClickedDefault(2)
-        }
-        binding.default3.setOnClickListener {
-            viewModel.onClickedDefault(3)
-        }
-        binding.default4.setOnClickListener {
-            viewModel.onClickedDefault(4)
-        }
 
-        viewModel.defaultRecipe.observe(viewLifecycleOwner, Observer {
-            val herbList: ArrayList<String> = arrayListOf()
-            val valueList: ArrayList<Int> = arrayListOf()
-            it.forEach { blend ->
-                herbList.add(blend.first)
-                valueList.add(blend.second)
-            }
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.add(
-                    R.id.container,
-                    BlendAmountFragment.newInstance(herbList, valueList)
-                )?.commit()
+        viewModel.setDefaultRecipe()
+
+        viewModel.defaultBlend.observe(viewLifecycleOwner, Observer {
+            createAdapter(it)
         })
+    }
 
+    private fun createAdapter(blendInfo: List<Blend>) {
+        val recyclerView = view?.findViewById<RecyclerView>(R.id.default_recipe_recycler_view) ?: return
+        val adapter = DefaultRecipeAdapter(blendInfo)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.adapter = adapter
+        adapter.notifyDataSetChanged()
+
+        adapter.setOnItemClickListener(object : DefaultRecipeAdapter.OnItemClickListener {
+            override fun onItemClickListener(position: Int) {
+                // 選択されたブレンドを表示
+                val herb: ArrayList<String> = arrayListOf()
+                blendInfo[position].herbName.split(",").also { list ->
+                    list.forEach { herb.add(it) }
+                }
+                val value: ArrayList<Int> = arrayListOf()
+                blendInfo[position].herbValue.split(",").also { list ->
+                    list.forEach { value.add(it.toInt()) }
+                }
+
+                activity?.supportFragmentManager?.beginTransaction()?.add(
+                    R.id.container, BlendAmountFragment.newInstance(
+                        herb,
+                        value
+                    )
+                )?.commit()
+            }
+        })
     }
 
 }
