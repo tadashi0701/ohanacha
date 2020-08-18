@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.monoprogram.myblend.entity.Herb
 import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
-import com.monoprogram.myblend.presentation.top.blend.myblend.MyBlendFragment
 import com.monoprogram.myblend.presentation.top.blend.top.TopFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,20 +20,20 @@ class MainActivity : AppCompatActivity() {
     private val dao = Application.database.herbDao()
 
     private val names = arrayListOf(
-        "RoseHip",
-        "Hibiscus",
-        "Lemongrass",
-        "Heath",
-        "Bardock",
-        "Stevia",
-        "LemonPeople",
-        "LemonMyrtle",
-        "Rooibos",
-        "Chamomile",
-        "Mint",
-        "Raspberry",
-        "LemonVerbena",
-        "DandyLion"
+        Application.instance.getString(R.string.RoseHip),
+        Application.instance.getString(R.string.Hibiscus),
+        Application.instance.getString(R.string.Lemongrass),
+        Application.instance.getString(R.string.Heath),
+        Application.instance.getString(R.string.Bardock),
+        Application.instance.getString(R.string.Stevia),
+        Application.instance.getString(R.string.LemonPeople),
+        Application.instance.getString(R.string.LemonMyrtle),
+        Application.instance.getString(R.string.Rooibos),
+        Application.instance.getString(R.string.Chamomile),
+        Application.instance.getString(R.string.Mint),
+        Application.instance.getString(R.string.Raspberry),
+        Application.instance.getString(R.string.LemonVerbena),
+        Application.instance.getString(R.string.DandyLion)
     )
     private val photos = arrayListOf(
         R.drawable.rosehip, R.drawable.hibiscus, R.drawable.lemongrass,

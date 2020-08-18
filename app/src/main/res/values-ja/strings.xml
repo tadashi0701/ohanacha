@@ -7,4 +7,18 @@
     <string name="msg_create_my_recipe">マイレシピを作成してください。</string>
     <string name="recipe_description">定番レシピの説明</string>
     <string name="select_base_herb">ベースハーブを選択して下さい。</string>
+    <string name="RoseHip">ローズヒップ</string>
+    <string name="Hibiscus">ハイビスカス</string>
+    <string name="Lemongrass">レモングラス</string>
+    <string name="Heath">ヒース</string>
+    <string name="Bardock">ごぼう</string>
+    <string name="Stevia">ステビア</string>
+    <string name="LemonPeople">レモンピール</string>
+    <string name="LemonMyrtle">レモンマートル</string>
+    <string name="Rooibos">ルイボス</string>
+    <string name="Chamomile">カモミール</string>
+    <string name="Mint">ミント</string>
+    <string name="Raspberry">ラズベリー</string>
+    <string name="LemonVerbena">レモンバーベナ</string>
+    <string name="DandyLion">ダンディライオン</string>
 </resources>

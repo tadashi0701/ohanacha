@@ -17,11 +17,11 @@ class MyBlendAdapter internal constructor(
 
     // リスナー格納変数
     lateinit var listener: OnItemClickListener
+    private var selectList: ArrayList<String> = arrayListOf()
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var imageView: ImageView = v.findViewById(R.id.image_view)
         var textView: TextView = v.findViewById(R.id.text_view)
-        var description: TextView = v.findViewById(R.id.text_herb_description)
         var selected: ImageView = v.findViewById(R.id.select_herb)
     }
 
@@ -37,14 +37,19 @@ class MyBlendAdapter internal constructor(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.imageView.setImageResource(herbInfo[position].imageId)
         holder.textView.text = herbInfo[position].herbName
-        holder.description.text = herbInfo[position].description
+        selectList.find { it == holder.textView.text.toString() }.also {
+            holder.selected.isSelected = it != null
+        }
 
-        holder.selected.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) listener.onItemClickListener(
-                holder.textView.text.toString(),
-                it.isSelected
-            )
+        holder.selected.setOnClickListener { select ->
+            select.isSelected = !select.isSelected
+            selectList.find { it == holder.textView.text.toString() }.also {
+                if (select.isSelected)
+                    selectList.add(holder.textView.text.toString())
+                else
+                    selectList.remove(holder.textView.text.toString())
+            }
+            listener.onItemClickListener(selectList)
         }
     }
 
@@ -54,7 +59,7 @@ class MyBlendAdapter internal constructor(
 
     //インターフェースの作成
     interface OnItemClickListener {
-        fun onItemClickListener(herbName: String, needsAdd: Boolean)
+        fun onItemClickListener(list: ArrayList<String>)
     }
 
     // リスナー

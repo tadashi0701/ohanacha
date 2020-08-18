@@ -7,4 +7,18 @@
     <string name="msg_create_my_recipe">Create My Recipe</string>
     <string name="recipe_description">Default Recipe Description</string>
     <string name="select_base_herb">Select Base Herb</string>
+    <string name="RoseHip">RoseHip</string>
+    <string name="Hibiscus">Hibiscus</string>
+    <string name="Lemongrass">Lemongrass</string>
+    <string name="Heath">Heath</string>
+    <string name="Bardock">Bardock</string>
+    <string name="Stevia">Stevia</string>
+    <string name="LemonPeople">LemonPeople</string>
+    <string name="LemonMyrtle">LemonMyrtle</string>
+    <string name="Rooibos">Rooibos</string>
+    <string name="Chamomile">Chamomile</string>
+    <string name="Mint">Mint</string>
+    <string name="Raspberry">Raspberry</string>
+    <string name="LemonVerbena">LemonVerbena</string>
+    <string name="DandyLion">DandyLion</string>
 </resources>

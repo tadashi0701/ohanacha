@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
 import com.monoprogram.myblend.databinding.FragmentMyBlendBinding
@@ -19,7 +19,7 @@ class MyBlendFragment : Fragment() {
 
     private lateinit var binding: FragmentMyBlendBinding
     private lateinit var viewModel: MyRecipeViewModel
-    private var selectList: ArrayList<String> = arrayListOf()
+    private var selectedList: ArrayList<String> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,14 +46,14 @@ class MyBlendFragment : Fragment() {
         // 進むボタン検知
         binding.btnNext.setOnClickListener {
             val valueList: ArrayList<Int> = arrayListOf()
-            selectList.forEach { _ ->
+            selectedList.forEach { _ ->
                 valueList.add(0)
             }
             activity?.supportFragmentManager?.beginTransaction()
                 ?.add(
                     R.id.container,
                     BlendAmountFragment.newInstance(
-                        selectList,
+                        selectedList,
                         valueList
                     )
                 )?.commit()
@@ -68,19 +68,12 @@ class MyBlendFragment : Fragment() {
                 herbInfo
             )
         recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.layoutManager = GridLayoutManager(activity, 2)
         recyclerView.adapter = adapter
 
         adapter.setOnItemClickListener(object : MyBlendAdapter.OnItemClickListener {
-            override fun onItemClickListener(herbName: String, needsAdd: Boolean) {
-                selectList.find { it == herbName }.also {
-                    if (needsAdd) {
-                        it ?: selectList.add(herbName)
-                    } else {
-                        it ?: return@also
-                        selectList.remove(herbName)
-                    }
-                }
+            override fun onItemClickListener(list: ArrayList<String>) {
+                selectedList = list
             }
         })
     }
