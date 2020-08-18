@@ -3,6 +3,7 @@ package com.monoprogram.myblend.presentation.top.blend.top
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -21,12 +22,14 @@ class DefaultRecipeAdapter internal constructor(
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var blendName: TextView = v.findViewById(R.id.text_blend_name)
         var herbName: TextView = v.findViewById(R.id.text_herb_name)
-        var myBlend: ConstraintLayout = v.findViewById(R.id.layout_my_blend)
+        var defaultBlend: ConstraintLayout = v.findViewById(R.id.layout_default_blend)
+        var defaultImage: ImageView = v.findViewById(R.id.image_default)
+        var description: TextView = v.findViewById(R.id.text_default_description)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.my_blend_item, parent, false)
+            .inflate(R.layout.default_blend_item, parent, false)
 
         return ViewHolder(
             view
@@ -36,8 +39,10 @@ class DefaultRecipeAdapter internal constructor(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.blendName.text = blendInfo[position].blendName
         holder.herbName.text = blendInfo[position].herbName
+        holder.description.text = blendInfo[position].blendDescription
+        holder.defaultImage.setImageResource(blendInfo[position].blendImage)
 
-        holder.myBlend.setOnClickListener {
+        holder.defaultBlend.setOnClickListener {
             listener.onItemClickListener(position)
         }
     }

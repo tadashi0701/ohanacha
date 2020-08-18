@@ -37,7 +37,9 @@ class MyRecipeViewModel : ViewModel() {
                         Application.instance.getString(R.string.LemonMyrtle) + "," +
                         Application.instance.getString(R.string.RoseHip) + "," +
                         Application.instance.getString(R.string.Stevia),
-                "3,2,2,1,1,1"
+                "3,2,2,1,1,1",
+                R.drawable.default_mint,
+                "すっきりとした味わいのハーブティー"
             ),
             Blend(
                 0,
@@ -45,7 +47,9 @@ class MyRecipeViewModel : ViewModel() {
                 Application.instance.getString(R.string.Hibiscus) + "," +
                         Application.instance.getString(R.string.RoseHip) + "," +
                         Application.instance.getString(R.string.Stevia),
-                "5,3,2"
+                "5,3,2",
+                R.drawable.default_hibiscus,
+                "酸味と甘みがあるハーブティー"
             ),
             Blend(
                 0,
@@ -53,7 +57,9 @@ class MyRecipeViewModel : ViewModel() {
                 Application.instance.getString(R.string.Lemongrass) + "," +
                         Application.instance.getString(R.string.LemonMyrtle) + "," +
                         Application.instance.getString(R.string.Stevia),
-                "5,3,2"
+                "5,3,2",
+                R.drawable.default_lemongrass,
+                "レモンの香りで癒されるハーブティー"
             ),
             Blend(
                 0,
@@ -62,7 +68,9 @@ class MyRecipeViewModel : ViewModel() {
                         Application.instance.getString(R.string.RoseHip) + "," +
                         Application.instance.getString(R.string.LemonVerbena) + "," +
                         Application.instance.getString(R.string.Stevia),
-                "4,3,2,1"
+                "4,3,2,1",
+                R.drawable.default_rooibos,
+                "ごくごく飲めるハーブティー"
             )
         )
 
@@ -98,7 +106,7 @@ class MyRecipeViewModel : ViewModel() {
         val value = valueList.joinToString(",")
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.Default) {
-                blendDao.insert(Blend(0, "test_" + blendDao.getAll().size, herb, value))
+                blendDao.insert(Blend(0, "test_" + blendDao.getAll().size, herb, value, 0, ""))
             }
         }
     }
