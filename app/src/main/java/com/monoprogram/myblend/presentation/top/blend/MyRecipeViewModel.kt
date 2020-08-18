@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.monoprogram.myblend.Application
+import com.monoprogram.myblend.R
 import com.monoprogram.myblend.entity.Blend
 import com.monoprogram.myblend.entity.Herb
 import kotlinx.coroutines.CoroutineScope
@@ -29,27 +30,39 @@ class MyRecipeViewModel : ViewModel() {
         listOf(
             Blend(
                 0,
-                "default1",
-                "Mint,Lemongrass,LemonVerbena,LemonMyrtle,RoseHip,Stevia",
+                "ミントベース",
+                Application.instance.getString(R.string.Mint) + "," +
+                        Application.instance.getString(R.string.Lemongrass) + "," +
+                        Application.instance.getString(R.string.LemonVerbena) + "," +
+                        Application.instance.getString(R.string.LemonMyrtle) + "," +
+                        Application.instance.getString(R.string.RoseHip) + "," +
+                        Application.instance.getString(R.string.Stevia),
                 "3,2,2,1,1,1"
             ),
             Blend(
                 0,
-                "default2",
-                "RoseHip,Hibiscus,Stevia",
+                "ハイビスカスベース",
+                Application.instance.getString(R.string.Hibiscus) + "," +
+                        Application.instance.getString(R.string.RoseHip) + "," +
+                        Application.instance.getString(R.string.Stevia),
                 "5,3,2"
             ),
             Blend(
                 0,
-                "default3",
-                "Mint,Lemongrass,LemonVerbena,LemonMyrtle,RoseHip,Stevia",
-                "3,2,2,1,1,1"
+                "レモングラスベース",
+                Application.instance.getString(R.string.Lemongrass) + "," +
+                        Application.instance.getString(R.string.LemonMyrtle) + "," +
+                        Application.instance.getString(R.string.Stevia),
+                "5,3,2"
             ),
             Blend(
                 0,
-                "default4",
-                "RoseHip,Hibiscus,Stevia",
-                "5,3,2"
+                "ルイボスベース",
+                Application.instance.getString(R.string.Rooibos) + "," +
+                        Application.instance.getString(R.string.RoseHip) + "," +
+                        Application.instance.getString(R.string.LemonVerbena) + "," +
+                        Application.instance.getString(R.string.Stevia),
+                "4,3,2,1"
             )
         )
 
