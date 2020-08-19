@@ -21,7 +21,6 @@ class DefaultRecipeAdapter internal constructor(
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var blendName: TextView = v.findViewById(R.id.text_blend_name)
-        var herbName: TextView = v.findViewById(R.id.text_herb_name)
         var defaultBlend: ConstraintLayout = v.findViewById(R.id.layout_default_blend)
         var defaultImage: ImageView = v.findViewById(R.id.image_default)
         var description: TextView = v.findViewById(R.id.text_default_description)
@@ -38,7 +37,6 @@ class DefaultRecipeAdapter internal constructor(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.blendName.text = blendInfo[position].blendName
-        holder.herbName.text = blendInfo[position].herbName
         holder.description.text = blendInfo[position].blendDescription
         holder.defaultImage.setImageResource(blendInfo[position].blendImage)
 

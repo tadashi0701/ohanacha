@@ -11,5 +11,6 @@ data class Blend(
     @ColumnInfo(name = "herbName") val herbName: String,
     @ColumnInfo(name = "herbValue") val herbValue: String,
     @ColumnInfo(name = "blendImage") val blendImage: Int,
-    @ColumnInfo(name = "blendDescription") val blendDescription: String
+    @ColumnInfo(name = "blendDescription") val blendDescription: String,
+    @ColumnInfo(name = "herbImageId") val herbImageId: String
 )
