@@ -13,10 +13,10 @@ class PageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         when (position) {
             // どのFragmentを表示するか
             0 -> {
-                return MyBlendFragment()
+                return DefaultRecipeFragment()
             }
             1 -> {
-                return DefaultRecipeFragment()
+                return MyBlendFragment()
             }
             2 -> {
                 return MyRecipeFragment()
@@ -36,10 +36,11 @@ class PageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
     override fun getPageTitle(position: Int): CharSequence? {
         when (position) {
             0 -> {
-                return Application.instance.getString(R.string.my_recipe)
+                return Application.instance.getString(R.string.default_recipe)
+
             }
             1 -> {
-                return Application.instance.getString(R.string.default_recipe)
+                return Application.instance.getString(R.string.my_recipe)
             }
             2 -> {
                 return Application.instance.getString(R.string.previous_recipe)

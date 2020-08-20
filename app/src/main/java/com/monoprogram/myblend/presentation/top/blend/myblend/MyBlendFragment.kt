@@ -70,6 +70,7 @@ class MyBlendFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = GridLayoutManager(activity, 2)
         recyclerView.adapter = adapter
+        adapter.notifyDataSetChanged()
 
         adapter.setOnItemClickListener(object : MyBlendAdapter.OnItemClickListener {
             override fun onItemClickListener(list: ArrayList<String>) {

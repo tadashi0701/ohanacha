@@ -26,6 +26,30 @@ class MyRecipeViewModel : ViewModel() {
     private val _defaultBlend = MutableLiveData<List<Blend>>()
     private val selectList: ArrayList<Herb> = arrayListOf()
 
+    private val names = arrayListOf(
+        Application.instance.getString(R.string.RoseHip),
+        Application.instance.getString(R.string.Hibiscus),
+        Application.instance.getString(R.string.Lemongrass),
+        Application.instance.getString(R.string.Heath),
+        Application.instance.getString(R.string.Bardock),
+        Application.instance.getString(R.string.Stevia),
+        Application.instance.getString(R.string.LemonPeople),
+        Application.instance.getString(R.string.LemonMyrtle),
+        Application.instance.getString(R.string.Rooibos),
+        Application.instance.getString(R.string.Chamomile),
+        Application.instance.getString(R.string.Mint),
+        Application.instance.getString(R.string.Raspberry),
+        Application.instance.getString(R.string.LemonVerbena),
+        Application.instance.getString(R.string.DandyLion)
+    )
+    private val photos = arrayListOf(
+        R.drawable.rosehip, R.drawable.hibiscus, R.drawable.lemongrass,
+        R.drawable.heath, R.drawable.bardock, R.drawable.stebia,
+        R.drawable.lemonpeople, R.drawable.lemonmyrtle, R.drawable.rooibos,
+        R.drawable.camomile, R.drawable.mint, R.drawable.raspberry, R.drawable.lemonverbena,
+        R.drawable.dandylion
+    )
+
     private val defaultInitRecipe: List<Blend> =
         listOf(
             Blend(
@@ -81,6 +105,11 @@ class MyRecipeViewModel : ViewModel() {
     fun onCreateHerbInfo() {
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.Default) {
+                if (herbDao.getAll().isEmpty()) {
+                    names.forEachIndexed { index, name ->
+                        herbDao.insert(Herb(0, name, "香りが良い", photos[index]))
+                    }
+                }
                 _herbInfo.postValue(herbDao.getAll())
             }
         }
