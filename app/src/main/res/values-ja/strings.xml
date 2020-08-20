@@ -21,4 +21,5 @@
     <string name="Raspberry">ラズベリー</string>
     <string name="LemonVerbena">レモンバーベナ</string>
     <string name="DandyLion">ダンディライオン</string>
+    <string name="msg_blend_save">ブレンドを保存します。\nブレンド名を付けて下さい。</string>
 </resources>

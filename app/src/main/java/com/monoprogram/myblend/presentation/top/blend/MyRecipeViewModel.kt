@@ -105,7 +105,7 @@ class MyRecipeViewModel : ViewModel() {
         }
     }
 
-    fun onClickedSave(herbList: List<String>, valueList: List<Int>) {
+    fun onClickedSave(herbList: List<String>, valueList: List<Int>, blendName: String) {
         val herb = herbList.joinToString(",")
         val value = valueList.joinToString(",")
         CoroutineScope(Dispatchers.Main).launch {
@@ -117,7 +117,7 @@ class MyRecipeViewModel : ViewModel() {
                 blendDao.insert(
                     Blend(
                         0,
-                        "test_" + blendDao.getAll().size,
+                        blendName,
                         herb,
                         value,
                         0,

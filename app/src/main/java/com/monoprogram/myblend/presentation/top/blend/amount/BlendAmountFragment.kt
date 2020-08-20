@@ -1,9 +1,14 @@
 package com.monoprogram.myblend.presentation.top.blend.amount
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -61,11 +66,27 @@ class BlendAmountFragment : Fragment() {
 
         // ブレンド保存ボタン
         binding.btnComp.setOnClickListener {
-            viewModel.onClickedSave(herbList, valueList)
-            // ブレンド量調整の画面を削除する
-            activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
-            // トップ画面を更新する
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container,TopFragment())?.commit()
+
+            // ブレンド名の付与ダイアログ
+            AlertDialog.Builder(activity).let {
+                val title = TextView(activity)
+                val edit = EditText(activity)
+                title.gravity = Gravity.CENTER
+                title.textSize = 16F
+                title.setText(getString(R.string.msg_blend_save))
+                it.setCustomTitle(title)
+                it.setView(edit)
+                it.setNegativeButton("CANCEL", null)
+                it.setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
+                    viewModel.onClickedSave(herbList, valueList, edit.text.toString())
+                    // ブレンド量調整の画面を削除する
+                    activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
+                    // トップ画面を更新する
+                    activity?.supportFragmentManager?.beginTransaction()
+                        ?.replace(R.id.container, TopFragment())?.commit()
+                })
+                it.show()
+            }
         }
     }
 
