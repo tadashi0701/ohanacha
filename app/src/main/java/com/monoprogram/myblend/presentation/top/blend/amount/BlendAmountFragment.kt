@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.view.marginLeft
+import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -69,12 +71,8 @@ class BlendAmountFragment : Fragment() {
 
             // ブレンド名の付与ダイアログ
             AlertDialog.Builder(activity).let {
-                val title = TextView(activity)
                 val edit = EditText(activity)
-                title.gravity = Gravity.CENTER
-                title.textSize = 16F
-                title.setText(getString(R.string.msg_blend_save))
-                it.setCustomTitle(title)
+                it.setMessage(R.string.msg_blend_save)
                 it.setView(edit)
                 it.setNegativeButton("CANCEL", null)
                 it.setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->

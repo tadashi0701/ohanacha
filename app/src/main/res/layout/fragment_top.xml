@@ -45,12 +45,14 @@
             android:id="@+id/default_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/ap_japanese_font"
             android:text="@string/default_recipe" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/previous_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/ap_japanese_font"
             android:text="@string/default_recipe" />
     </com.google.android.material.tabs.TabLayout>
 

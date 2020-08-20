@@ -16,7 +16,6 @@
             android:id="@+id/image_default"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/text_margin"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -26,8 +25,9 @@
     <TextView
         android:id="@+id/text_blend_name"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin"
+        android:textSize="20sp"
         app:layout_constraintLeft_toRightOf="@+id/image_default_layout"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,10 +35,12 @@
     <TextView
         android:id="@+id/text_default_description"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
+        android:layout_height="0dp"
+        android:textSize="14sp"
+        android:layout_marginTop="@dimen/text_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/image_default_layout"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_blend_name" />
 
     <View
