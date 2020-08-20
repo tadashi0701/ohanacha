@@ -1,5 +1,6 @@
 package com.monoprogram.myblend.presentation.top.blend.amount
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,7 @@ class BlendAmountAdapter internal constructor(
         var imageView: ImageView = v.findViewById(R.id.image_view)
         var textView: TextView = v.findViewById(R.id.text_view)
         var seekBar: SeekBar = v.findViewById(R.id.seekbar)
+        var herbValue: TextView = v.findViewById(R.id.text_herb_value)
     }
 
     // Create new views (invoked by the layout manager)
@@ -47,6 +49,7 @@ class BlendAmountAdapter internal constructor(
         holder.imageView.setImageResource(herbInfo[position].imageId)
         holder.textView.text = herbInfo[position].herbName
         holder.seekBar.progress = itemValues[position]
+        holder.herbValue.text = (itemValues[position] * 10).toString() + "%"
 
         holder.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
@@ -66,7 +69,11 @@ class BlendAmountAdapter internal constructor(
 
     fun updateValue(position: Int, valueList: ArrayList<Int>) {
         itemValues = valueList
-        notifyItemChanged(position)
+        try {
+            notifyItemChanged(position)
+        } catch (e: Exception) {
+            Log.d(this.javaClass.name, e.toString())
+        }
     }
 
     //インターフェースの作成

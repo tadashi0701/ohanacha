@@ -21,6 +21,6 @@
     <string name="Raspberry">ラズベリー</string>
     <string name="LemonVerbena">レモンバーベナ</string>
     <string name="DandyLion">ダンディライオン</string>
-    <string name="msg_blend_save">ブレンドを保存します。\nブレンド名を付けて下さい。</string>
+    <string name="msg_blend_save">ブレンドを保存します。\n名前を付けて下さい。</string>
     <string name="msg_cannot_amount">100%を超えてしまいました。</string>
 </resources>

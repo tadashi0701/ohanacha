@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.TextView
+import androidx.core.view.setPadding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -68,8 +70,12 @@ class BlendAmountFragment : Fragment() {
 
             // ブレンド名の付与ダイアログ
             AlertDialog.Builder(activity).let {
+                val msg = TextView(activity)
                 val edit = EditText(activity)
-                it.setMessage(R.string.msg_blend_save)
+                msg.setText(R.string.msg_blend_save)
+                msg.textSize = 16F
+                msg.setPadding(20)
+                it.setCustomTitle(msg)
                 it.setView(edit)
                 it.setNegativeButton("CANCEL", null)
                 it.setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
@@ -119,8 +125,8 @@ class BlendAmountFragment : Fragment() {
                             it.setMessage(R.string.msg_cannot_amount)
                             it.setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
                                 valueList[position] = 0
-                                adapter.updateValue(position, valueList)
                                 myAlertDialog = null
+                                adapter.updateValue(position, valueList)
                             })
                             it.setCancelable(false)
                             it.show()
@@ -129,6 +135,7 @@ class BlendAmountFragment : Fragment() {
                 } else {
                     binding.ProgressBarHorizontal.setProgress(sum, true)
                     binding.textPercent.text = (sum * 10).toString() + "%"
+                    adapter.updateValue(position, valueList)
                 }
             }
         })

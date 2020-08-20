@@ -3,4 +3,5 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#909e41</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="herbValue">#dc143c</color>
 </resources>
