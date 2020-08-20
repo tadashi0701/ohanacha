@@ -64,6 +64,11 @@ class BlendAmountAdapter internal constructor(
         })
     }
 
+    fun updateValue(position: Int, valueList: ArrayList<Int>) {
+        itemValues = valueList
+        notifyItemChanged(position)
+    }
+
     //インターフェースの作成
     interface OnSeekBarChangeListener {
         fun OnSeekBarChangeListener(position: Int, value: Int)

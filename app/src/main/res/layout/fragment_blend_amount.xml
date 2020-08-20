@@ -60,6 +60,29 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ProgressBar
+        android:id="@+id/ProgressBarHorizontal"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/progress_bg"
+        android:max="10"
+        android:progress="0"
+        android:progressDrawable="@drawable/progressbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_view" />
+
+    <TextView
+        android:id="@+id/text_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/ProgressBarHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ProgressBarHorizontal" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
@@ -69,6 +92,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_view" />
+        app:layout_constraintTop_toBottomOf="@+id/ProgressBarHorizontal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

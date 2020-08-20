@@ -3,14 +3,10 @@ package com.monoprogram.myblend.presentation.top.blend.amount
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.TextView
-import androidx.core.view.marginLeft
-import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -27,6 +23,7 @@ class BlendAmountFragment : Fragment() {
 
     private lateinit var viewModel: MyRecipeViewModel
     private lateinit var binding: FragmentBlendAmountBinding
+    private var myAlertDialog: AlertDialog? = null
 
     private var herbList: ArrayList<String> = arrayListOf()
     private var valueList: ArrayList<Int> = arrayListOf()
@@ -86,6 +83,13 @@ class BlendAmountFragment : Fragment() {
                 it.show()
             }
         }
+
+        // プログレスバー
+        var sum = 0
+        valueList.forEach { sum += it }
+        binding.ProgressBarHorizontal.setProgress(sum, true)
+        binding.textPercent.text = (sum * 10).toString() + "%"
+
     }
 
     private fun createAdapter(herbInfo: List<Herb>) {
@@ -103,6 +107,29 @@ class BlendAmountFragment : Fragment() {
         adapter.setOnSeekBarChangeListener(object : BlendAmountAdapter.OnSeekBarChangeListener {
             override fun OnSeekBarChangeListener(position: Int, value: Int) {
                 valueList[position] = value
+
+                // プログレスバーの値を更新
+                var sum = 0
+                valueList.forEach { sum += it }
+
+                // 10を超えたら警告をして値を戻す
+                if (sum > 10) {
+                    if (myAlertDialog == null) {
+                        myAlertDialog = AlertDialog.Builder(activity).let {
+                            it.setMessage(R.string.msg_cannot_amount)
+                            it.setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
+                                valueList[position] = 0
+                                adapter.updateValue(position, valueList)
+                                myAlertDialog = null
+                            })
+                            it.setCancelable(false)
+                            it.show()
+                        }
+                    }
+                } else {
+                    binding.ProgressBarHorizontal.setProgress(sum, true)
+                    binding.textPercent.text = (sum * 10).toString() + "%"
+                }
             }
         })
     }

@@ -22,4 +22,5 @@
     <string name="LemonVerbena">LemonVerbena</string>
     <string name="DandyLion">DandyLion</string>
     <string name="msg_blend_save">Save Blend.\nCreate Blend Name</string>
+    <string name="msg_cannot_amount">Can not amount</string>
 </resources>
