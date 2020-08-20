@@ -3,6 +3,9 @@ package com.monoprogram.myblend
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.monoprogram.myblend.entity.Herb
 import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
 import com.monoprogram.myblend.presentation.top.blend.top.TopFragment
@@ -16,6 +19,8 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var router: TopRouter
+    lateinit var mAdView: AdView
+
 
     private val dao = Application.database.herbDao()
 
@@ -47,6 +52,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Application.component.inject(this)
+        MobileAds.initialize(this) {}
+        MobileAds.initialize(this) {}
+        mAdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+
         //router.showTopFragment() -> 期待通りにrouterが動作しない為、一旦コメントアウト
         supportFragmentManager.beginTransaction().add(
             R.id.container,
