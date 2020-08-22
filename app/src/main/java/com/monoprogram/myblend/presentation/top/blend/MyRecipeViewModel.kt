@@ -161,4 +161,13 @@ class MyRecipeViewModel : ViewModel() {
     fun setDefaultRecipe() {
         _defaultBlend.postValue(defaultInitRecipe)
     }
+
+    fun deleteBlend(blend: Blend) {
+        CoroutineScope(Dispatchers.Main).launch {
+            withContext(Dispatchers.Default) {
+                blendDao.delete(blend)
+                _blendInfo.postValue(blendDao.getAll())
+            }
+        }
+    }
 }

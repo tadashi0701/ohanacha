@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.monoprogram.myblend.Application
 import com.monoprogram.myblend.R
-import com.monoprogram.myblend.presentation.top.blend.myblend.MyBlendFragment
+import com.monoprogram.myblend.presentation.top.blend.myblend.HerbListFragment
 
 @Suppress("DEPRECATION")
 class PageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
@@ -16,7 +16,7 @@ class PageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
                 return DefaultRecipeFragment()
             }
             1 -> {
-                return MyBlendFragment()
+                return HerbListFragment()
             }
             2 -> {
                 return MyRecipeFragment()

@@ -36,7 +36,7 @@ class BlendAmountAdapter internal constructor(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // create a new view
         val view: View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.my_text_item, parent, false)
+            .inflate(R.layout.amount_item, parent, false)
 
         // set the view's size, margins, paddings and layout parameters
         return ViewHolder(

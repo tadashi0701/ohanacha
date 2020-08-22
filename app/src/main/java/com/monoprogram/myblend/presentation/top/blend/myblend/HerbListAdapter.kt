@@ -10,10 +10,10 @@ import com.monoprogram.myblend.R
 import com.monoprogram.myblend.entity.Herb
 
 
-class MyBlendAdapter internal constructor(
+class HerbListAdapter internal constructor(
     private var herbInfo: List<Herb>
 ) :
-    RecyclerView.Adapter<MyBlendAdapter.ViewHolder>() {
+    RecyclerView.Adapter<HerbListAdapter.ViewHolder>() {
 
     // リスナー格納変数
     lateinit var listener: OnItemClickListener
@@ -27,7 +27,7 @@ class MyBlendAdapter internal constructor(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.my_recipe_base_item, parent, false)
+            .inflate(R.layout.herb_select_item, parent, false)
 
         return ViewHolder(
             view

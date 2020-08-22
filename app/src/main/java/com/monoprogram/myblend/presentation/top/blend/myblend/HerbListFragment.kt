@@ -10,14 +10,14 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
-import com.monoprogram.myblend.databinding.FragmentMyBlendBinding
+import com.monoprogram.myblend.databinding.FragmentHerbListBinding
 import com.monoprogram.myblend.entity.Herb
 import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
 import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
 
-class MyBlendFragment : Fragment() {
+class HerbListFragment : Fragment() {
 
-    private lateinit var binding: FragmentMyBlendBinding
+    private lateinit var binding: FragmentHerbListBinding
     private lateinit var viewModel: MyRecipeViewModel
     private var selectedList: ArrayList<String> = arrayListOf()
 
@@ -25,11 +25,11 @@ class MyBlendFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_my_blend, container, false)
+        return inflater.inflate(R.layout.fragment_herb_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding = FragmentMyBlendBinding.bind(view)
+        binding = FragmentHerbListBinding.bind(view)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -64,7 +64,7 @@ class MyBlendFragment : Fragment() {
         val recyclerView =
             view?.findViewById<RecyclerView>(R.id.base_recycler_view) ?: return
         val adapter =
-            MyBlendAdapter(
+            HerbListAdapter(
                 herbInfo
             )
         recyclerView.setHasFixedSize(true)
@@ -72,7 +72,7 @@ class MyBlendFragment : Fragment() {
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
 
-        adapter.setOnItemClickListener(object : MyBlendAdapter.OnItemClickListener {
+        adapter.setOnItemClickListener(object : HerbListAdapter.OnItemClickListener {
             override fun onItemClickListener(list: ArrayList<String>) {
                 selectedList = list
             }

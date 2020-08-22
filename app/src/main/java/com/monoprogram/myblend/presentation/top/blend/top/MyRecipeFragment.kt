@@ -1,5 +1,7 @@
 package com.monoprogram.myblend.presentation.top.blend.top
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,26 +12,25 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
-import com.monoprogram.myblend.databinding.FragmentMyRecipeBinding
+import com.monoprogram.myblend.databinding.FragmentMyBlendBinding
 import com.monoprogram.myblend.entity.Blend
 import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
 import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
-import com.monoprogram.myblend.presentation.top.blend.myblend.MyBlendFragment
 
 class MyRecipeFragment : Fragment() {
 
     private lateinit var viewModel: MyRecipeViewModel
-    private lateinit var binding: FragmentMyRecipeBinding
+    private lateinit var binding: FragmentMyBlendBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_my_recipe, container, false)
+        return inflater.inflate(R.layout.fragment_my_blend, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding = FragmentMyRecipeBinding.bind(view)
+        binding = FragmentMyBlendBinding.bind(view)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -42,8 +43,8 @@ class MyRecipeFragment : Fragment() {
                 binding.textCreateRecipe.visibility = View.VISIBLE
             } else {
                 binding.textCreateRecipe.visibility = View.INVISIBLE
-                createAdapter(it)
             }
+            createAdapter(it)
         })
     }
 
@@ -78,6 +79,20 @@ class MyRecipeFragment : Fragment() {
                         value
                     )
                 )?.commit()
+            }
+
+            override fun onItemDeleteClickListener(position: Int) {
+                // 選択されたブレンドを削除
+                AlertDialog.Builder(activity).let {
+                    it.setMessage(R.string.msg_delete_blend)
+                    it.setNegativeButton("CANCEL", null)
+                    it.setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
+                        viewModel.deleteBlend(blendInfo[position])
+                    })
+                    it.setCancelable(false)
+                    it.show()
+                }
+                blendInfo[position].id
             }
         })
     }

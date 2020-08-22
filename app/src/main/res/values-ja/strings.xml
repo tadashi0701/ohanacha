@@ -23,4 +23,5 @@
     <string name="DandyLion">ダンディライオン</string>
     <string name="msg_blend_save">ブレンドを保存します。\n名前を付けて下さい。</string>
     <string name="msg_cannot_amount">100%を超えてしまいました。</string>
+    <string name="msg_delete_blend">ブレンドを削除します。\nよろしいですか？</string>
 </resources>

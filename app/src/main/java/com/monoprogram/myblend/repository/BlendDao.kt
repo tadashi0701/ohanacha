@@ -6,13 +6,13 @@ import com.monoprogram.myblend.entity.Blend
 @Dao
 interface BlendDao {
     @Insert
-    fun insert(user: Blend)
+    fun insert(blend: Blend)
 
     @Update
-    fun update(user: Blend)
+    fun update(blend: Blend)
 
     @Delete
-    fun delete(user: Blend)
+    fun delete(blend: Blend)
 
     @Query("delete from blend")
     fun deleteAll()

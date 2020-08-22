@@ -3,6 +3,7 @@ package com.monoprogram.myblend.presentation.top.blend.top
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +26,7 @@ class MyRecipeAdapter internal constructor(
         var blendName: TextView = v.findViewById(R.id.text_blend_name)
         var myBlend: ConstraintLayout = v.findViewById(R.id.layout_my_blend)
         var herbImage: RecyclerView = v.findViewById(R.id.my_blend_recycler_view)
+        var deleteBlend: ImageView = v.findViewById(R.id.delete_blend)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -53,10 +55,16 @@ class MyRecipeAdapter internal constructor(
             it.adapter = herbImageAdapter
         }
 
-
+        // ブレンドしたハーブの詳細を表示する
         holder.myBlend.setOnClickListener {
             listener.onItemClickListener(position)
         }
+
+        // ブレンドしたハーブを削除する
+        holder.deleteBlend.setOnClickListener {
+            listener.onItemDeleteClickListener(position)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -66,6 +74,7 @@ class MyRecipeAdapter internal constructor(
     //インターフェースの作成
     interface OnItemClickListener {
         fun onItemClickListener(position: Int)
+        fun onItemDeleteClickListener(position: Int)
     }
 
     // リスナー
