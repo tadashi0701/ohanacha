@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context=".presentation.top.blend.amount.BlendAmountFragment">
+    tools:context=".presentation.top.blend.amount.AmountConfirmFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header_view"
@@ -37,64 +37,46 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/btn_comp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:src="@mipmap/icon_comp"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btn_back" />
-
-        <ImageView
-            android:id="@+id/btn_amount"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginEnd="10dp"
-            android:src="@mipmap/herb_amount"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_back"
-            app:layout_constraintEnd_toStartOf="@+id/btn_comp"
-            app:layout_constraintTop_toTopOf="@+id/btn_back" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/recipe_description"
+            android:text="@string/quantity_confirm"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/btn_back"
-            app:layout_constraintEnd_toStartOf="@+id/btn_amount"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btn_back" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ProgressBar
-        android:id="@+id/ProgressBarHorizontal"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@drawable/progress_bg"
-        android:max="10"
-        android:progress="0"
-        android:progressDrawable="@drawable/progressbar"
-        app:layout_constraintEnd_toEndOf="parent"
+    <EditText
+        android:id="@+id/edit_cups"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin"
+        android:inputType="number"
+        android:maxLength="5"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header_view" />
 
     <TextView
-        android:id="@+id/text_percent"
+        android:id="@+id/text_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/ProgressBarHorizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ProgressBarHorizontal" />
+        android:layout_marginStart="10dp"
+        android:text="@string/quantity_confirm_description"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_cups"
+        app:layout_constraintStart_toEndOf="@+id/edit_cups"
+        app:layout_constraintTop_toTopOf="@+id/edit_cups" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
+        android:id="@+id/amount_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/text_margin"
@@ -102,6 +84,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProgressBarHorizontal" />
+        app:layout_constraintTop_toBottomOf="@+id/text_amount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

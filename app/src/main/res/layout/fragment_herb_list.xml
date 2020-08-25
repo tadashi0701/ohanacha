@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainColor"
-    tools:context=".presentation.top.blend.myblend.HerbListFragment">
+    tools:context=".presentation.top.blend.herblist.HerbListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/base_recycler_view"
@@ -24,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/text_margin"
         android:layout_marginBottom="@dimen/text_margin"
-        android:src="@mipmap/icon_next"
+        android:backgroundTint="@android:color/holo_purple"
+        android:src="@mipmap/icon_list"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

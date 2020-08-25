@@ -24,4 +24,6 @@
     <string name="msg_blend_save">ブレンドを保存します。\n名前を付けて下さい。</string>
     <string name="msg_cannot_amount">100%を超えてしまいました。</string>
     <string name="msg_delete_blend">ブレンドを削除します。\nよろしいですか？</string>
+    <string name="quantity_confirm">分量確認</string>
+    <string name="quantity_confirm_description">杯分のお茶をつくります。</string>
 </resources>

@@ -5,7 +5,7 @@
     <string name="my_recipe">My Recipe</string>
     <string name="previous_recipe">Previous Recipe</string>
     <string name="msg_create_my_recipe">Create My Recipe</string>
-    <string name="recipe_description">Default Recipe Description</string>
+    <string name="recipe_description">Herb amount</string>
     <string name="select_base_herb">Select Base Herb</string>
     <string name="RoseHip">RoseHip</string>
     <string name="Hibiscus">Hibiscus</string>
@@ -24,4 +24,6 @@
     <string name="msg_blend_save">Save Blend.\nCreate Blend Name</string>
     <string name="msg_cannot_amount">Can not amount</string>
     <string name="msg_delete_blend">Delete blend?</string>
+    <string name="quantity_confirm">Quantity confirmation</string>
+    <string name="quantity_confirm_description">cups of tea.</string>
 </resources>

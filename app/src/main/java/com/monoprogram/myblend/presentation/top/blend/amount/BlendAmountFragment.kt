@@ -96,6 +96,12 @@ class BlendAmountFragment : Fragment() {
         binding.ProgressBarHorizontal.setProgress(sum, true)
         binding.textPercent.text = (sum * 10).toString() + "%"
 
+        // 分量確認ボタン
+        binding.btnAmount.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.add(R.id.container, AmountConfirmFragment.newInstance(herbList, valueList))
+                ?.commit()
+        }
     }
 
     private fun createAdapter(herbInfo: List<Herb>) {

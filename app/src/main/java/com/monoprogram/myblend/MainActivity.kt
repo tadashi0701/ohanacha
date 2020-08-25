@@ -9,6 +9,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
+import com.monoprogram.myblend.presentation.top.blend.amount.AmountConfirmFragment
 import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
 import com.monoprogram.myblend.presentation.top.blend.top.TopFragment
 import javax.inject.Inject
@@ -47,7 +48,8 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.container) ?: return
         when {
-            fragment is BlendAmountFragment -> {
+            fragment is AmountConfirmFragment ||
+                    fragment is BlendAmountFragment -> {
                 supportFragmentManager.beginTransaction().remove(fragment).commit()
             }
             else -> {

@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.blend.myblend
+package com.monoprogram.myblend.presentation.top.blend.herblist
 
 import android.os.Bundle
 import android.view.LayoutInflater
