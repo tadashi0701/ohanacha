@@ -11,24 +11,34 @@
         android:id="@+id/text_blend_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin"
         android:layout_marginTop="10dp"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/my_blend_recycler_view"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/layout_my_blend" />
 
     <ImageView
         android:id="@+id/delete_blend"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        android:layout_marginEnd="@dimen/text_margin"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
         android:src="@drawable/delete_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/text_blend_name"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/text_blend_name" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/text_margin"
+        android:layout_marginBottom="@dimen/text_margin"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/my_blend_recycler_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_blend_name" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_blend_recycler_view"
@@ -37,7 +47,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="@dimen/text_margin"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_blend_name" />

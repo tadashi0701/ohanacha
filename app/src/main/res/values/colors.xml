@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#909e41</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#696969</color>
     <color name="herbValue">#dc143c</color>
-    <color name="mainColor">#db7093</color>
+    <color name="mainColor">#fffafa</color>
+    <color name="blendColor">#a9a9a9</color>
 </resources>
