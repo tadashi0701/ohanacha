@@ -6,7 +6,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/mainColor"
     android:orientation="vertical"
     tools:context=".presentation.top.blend.amount.AmountConfirmFragment">
 
@@ -57,6 +57,7 @@
         android:layout_marginStart="@dimen/text_margin"
         android:inputType="number"
         android:maxLength="5"
+        android:text="10"
         android:textAlignment="center"
         android:textColor="@android:color/holo_purple"
         android:textSize="24sp"
