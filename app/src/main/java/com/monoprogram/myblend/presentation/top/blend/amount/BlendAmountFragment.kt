@@ -67,7 +67,7 @@ class BlendAmountFragment : Fragment() {
 
         // ブレンド保存ボタン
         binding.btnComp.setOnClickListener {
-
+            if (!checkPercent()) return@setOnClickListener
             // ブレンド名の付与ダイアログ
             AlertDialog.Builder(activity).let {
                 val msg = TextView(activity)
@@ -98,6 +98,7 @@ class BlendAmountFragment : Fragment() {
 
         // 分量確認ボタン
         binding.btnAmount.setOnClickListener {
+            if (!checkPercent()) return@setOnClickListener
             activity?.supportFragmentManager?.beginTransaction()
                 ?.add(R.id.container, AmountConfirmFragment.newInstance(herbList, valueList))
                 ?.commit()
@@ -145,6 +146,25 @@ class BlendAmountFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun checkPercent(): Boolean {
+        var sum = 0
+        valueList.forEach { sum += it }
+
+        // 100%ではない為警告表示
+        if (sum != 10) {
+            AlertDialog.Builder(activity).let {
+                it.setMessage(R.string.msg_100_percent)
+                it.setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
+                    //nop
+                })
+                it.setCancelable(false)
+                it.show()
+            }
+            return false
+        }
+        return true
     }
 
     companion object {

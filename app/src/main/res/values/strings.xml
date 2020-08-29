@@ -26,4 +26,6 @@
     <string name="msg_delete_blend">Delete blend?</string>
     <string name="quantity_confirm">Quantity confirmation</string>
     <string name="quantity_confirm_description">cups of tea.</string>
+    <string name="msg_100_percent">Please 100%</string>
+    <string name="msg_select_herb">Please select herb</string>
 </resources>

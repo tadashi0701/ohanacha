@@ -26,4 +26,6 @@
     <string name="msg_delete_blend">ブレンドを削除します。\nよろしいですか？</string>
     <string name="quantity_confirm">分量確認</string>
     <string name="quantity_confirm_description">杯分のお茶をつくります。</string>
+    <string name="msg_100_percent">100%にして下さい</string>
+    <string name="msg_select_herb">ハーブを選択して下さい</string>
 </resources>

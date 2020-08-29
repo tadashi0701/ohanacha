@@ -1,5 +1,7 @@
 package com.monoprogram.myblend.presentation.top.blend.top.HerbList
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -45,6 +47,19 @@ class HerbListFragment : Fragment() {
 
         // 進むボタン検知
         binding.btnNext.setOnClickListener {
+
+            if (selectedList.isEmpty()) {
+                AlertDialog.Builder(activity).let {
+                    it.setMessage(R.string.msg_select_herb)
+                    it.setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
+                        //nop
+                    })
+                    it.setCancelable(false)
+                    it.show()
+                }
+                return@setOnClickListener
+            }
+
             val valueList: ArrayList<Int> = arrayListOf()
             selectedList.forEach { _ ->
                 valueList.add(0)
