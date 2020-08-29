@@ -48,10 +48,13 @@ class MyRecipeAdapter internal constructor(
                 image.add(it.toInt())
             }
         }
-        val herbImageAdapter =
-            HerbImageAdapter(
-                image
-            )
+        val name: ArrayList<String> = arrayListOf()
+        blendInfo[position].herbName.split(",").also { list ->
+            list.forEach {
+                name.add(it)
+            }
+        }
+        val herbImageAdapter = HerbImageAdapter(image, name)
         holder.herbImage.let {
             it.layoutManager =
                 LinearLayoutManager(Application.instance, LinearLayoutManager.HORIZONTAL, false)

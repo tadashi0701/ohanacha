@@ -19,6 +19,7 @@ class AmountConfirmAdapter internal constructor(
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var imageView: ImageView = v.findViewById(R.id.image_herb)
         var textView: TextView = v.findViewById(R.id.text_amount)
+        var herbName: TextView = v.findViewById(R.id.text_herb_name)
     }
 
     // Create new views (invoked by the layout manager)
@@ -37,6 +38,7 @@ class AmountConfirmAdapter internal constructor(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.imageView.setImageResource(herbInfo[position].imageId)
         holder.textView.text = itemValues[position].toString() + "g"
+        holder.herbName.text = herbInfo[position].herbName
     }
 
     // Return the size of your dataset (invoked by the layout manager)

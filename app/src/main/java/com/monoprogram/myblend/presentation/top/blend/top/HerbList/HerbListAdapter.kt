@@ -41,20 +41,28 @@ class HerbListAdapter internal constructor(
             holder.selected.isSelected = it != null
         }
 
+        // ハーブ選択を検知
+        holder.imageView.setOnClickListener {
+            updateSelected(holder)
+        }
         holder.selected.setOnClickListener { select ->
-            select.isSelected = !select.isSelected
-            selectList.find { it == holder.textView.text.toString() }.also {
-                if (select.isSelected)
-                    selectList.add(holder.textView.text.toString())
-                else
-                    selectList.remove(holder.textView.text.toString())
-            }
-            listener.onItemClickListener(selectList)
+            updateSelected(holder)
         }
     }
 
     override fun getItemCount(): Int {
         return herbInfo.size
+    }
+
+    private fun updateSelected(holder: ViewHolder) {
+        holder.selected.isSelected = !holder.selected.isSelected
+        selectList.find { it == holder.textView.text.toString() }.also {
+            if (holder.selected.isSelected)
+                selectList.add(holder.textView.text.toString())
+            else
+                selectList.remove(holder.textView.text.toString())
+        }
+        listener.onItemClickListener(selectList)
     }
 
     //インターフェースの作成
