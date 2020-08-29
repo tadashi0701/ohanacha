@@ -1,7 +1,5 @@
-package com.monoprogram.myblend.presentation.top.blend.top
+package com.monoprogram.myblend.presentation.top.blend.top.DefaultBlend
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,56 +10,50 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
-import com.monoprogram.myblend.databinding.FragmentMyBlendBinding
+import com.monoprogram.myblend.databinding.FragmentDefaultRecipeBinding
 import com.monoprogram.myblend.entity.Blend
 import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
 import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
 
-class MyRecipeFragment : Fragment() {
+class DefaultRecipeFragment : Fragment() {
 
     private lateinit var viewModel: MyRecipeViewModel
-    private lateinit var binding: FragmentMyBlendBinding
+    private lateinit var binding: FragmentDefaultRecipeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_my_blend, container, false)
+        return inflater.inflate(R.layout.fragment_default_recipe, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding = FragmentMyBlendBinding.bind(view)
+        binding = FragmentDefaultRecipeBinding.bind(view)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MyRecipeViewModel::class.java)
-        viewModel.onUpdateBlendInfo()
 
-        viewModel.blendInfo.observe(viewLifecycleOwner, Observer {
-            if (it.isEmpty()) {
-                binding.textCreateRecipe.visibility = View.VISIBLE
-            } else {
-                binding.textCreateRecipe.visibility = View.INVISIBLE
-            }
+        viewModel.setDefaultRecipe()
+
+        viewModel.defaultBlend.observe(viewLifecycleOwner, Observer {
             createAdapter(it)
         })
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.onUpdateBlendInfo()
-    }
-
     private fun createAdapter(blendInfo: List<Blend>) {
-        val recyclerView = view?.findViewById<RecyclerView>(R.id.my_recipe_recycler_view) ?: return
-        val adapter = MyRecipeAdapter(blendInfo)
+        val recyclerView = view?.findViewById<RecyclerView>(R.id.default_recipe_recycler_view) ?: return
+        val adapter =
+            DefaultRecipeAdapter(
+                blendInfo
+            )
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
 
-        adapter.setOnItemClickListener(object : MyRecipeAdapter.OnItemClickListener {
+        adapter.setOnItemClickListener(object : DefaultRecipeAdapter.OnItemClickListener {
             override fun onItemClickListener(position: Int) {
                 // 選択されたブレンドを表示
                 val herb: ArrayList<String> = arrayListOf()
@@ -80,20 +72,7 @@ class MyRecipeFragment : Fragment() {
                     )
                 )?.commit()
             }
-
-            override fun onItemDeleteClickListener(position: Int) {
-                // 選択されたブレンドを削除
-                AlertDialog.Builder(activity).let {
-                    it.setMessage(R.string.msg_delete_blend)
-                    it.setNegativeButton("CANCEL", null)
-                    it.setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
-                        viewModel.deleteBlend(blendInfo[position])
-                    })
-                    it.setCancelable(false)
-                    it.show()
-                }
-                blendInfo[position].id
-            }
         })
     }
+
 }

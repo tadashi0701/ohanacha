@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.blend.top
+package com.monoprogram.myblend.presentation.top.blend.top.MyBlend
 
 import android.view.LayoutInflater
 import android.view.View
@@ -48,7 +48,10 @@ class MyRecipeAdapter internal constructor(
                 image.add(it.toInt())
             }
         }
-        val herbImageAdapter = HerbImageAdapter(image)
+        val herbImageAdapter =
+            HerbImageAdapter(
+                image
+            )
         holder.herbImage.let {
             it.layoutManager =
                 LinearLayoutManager(Application.instance, LinearLayoutManager.HORIZONTAL, false)
