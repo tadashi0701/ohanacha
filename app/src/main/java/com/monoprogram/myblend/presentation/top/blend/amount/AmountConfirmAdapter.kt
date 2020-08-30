@@ -37,7 +37,8 @@ class AmountConfirmAdapter internal constructor(
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.imageView.setImageResource(herbInfo[position].imageId)
-        holder.textView.text = itemValues[position].toString() + "g"
+        val inValue = String.format("%.1f", itemValues[position])
+        holder.textView.text = inValue + "g"
         holder.herbName.text = herbInfo[position].herbName
     }
 
