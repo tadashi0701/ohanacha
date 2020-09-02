@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         // 広告の初期化
         Application.component.inject(this)
         MobileAds.initialize(this) {}
-        MobileAds.initialize(this) {}
         mAdView = findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)

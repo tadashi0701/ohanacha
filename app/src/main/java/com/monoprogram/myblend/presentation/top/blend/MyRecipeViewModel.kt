@@ -43,11 +43,11 @@ class MyRecipeViewModel : ViewModel() {
         Application.instance.getString(R.string.DandyLion)
     )
     private val photos = arrayListOf(
-        R.drawable.rosehip, R.drawable.hibiscus, R.drawable.lemongrass,
-        R.drawable.heath, R.drawable.bardock, R.drawable.stebia,
-        R.drawable.lemonpeople, R.drawable.lemonmyrtle, R.drawable.rooibos,
-        R.drawable.camomile, R.drawable.mint, R.drawable.raspberry, R.drawable.lemonverbena,
-        R.drawable.dandylion
+        R.mipmap.rosehip, R.mipmap.hibiscus, R.mipmap.lemongrass,
+        R.mipmap.heath, R.mipmap.bardock, R.mipmap.stebia,
+        R.mipmap.lemonpeople, R.mipmap.lemonmyrtle, R.mipmap.rooibos,
+        R.mipmap.camomile, R.mipmap.mint, R.mipmap.raspberry, R.mipmap.lemonverbena,
+        R.mipmap.dandylion
     )
 
     private val defaultInitRecipe: List<Blend> =
@@ -62,7 +62,7 @@ class MyRecipeViewModel : ViewModel() {
                         Application.instance.getString(R.string.RoseHip) + "," +
                         Application.instance.getString(R.string.Stevia),
                 "3,2,2,1,1,1",
-                R.drawable.default_mint,
+                R.mipmap.default_mint,
                 "すっきりとした味わいのハーブティー",
                 ""
             ),
@@ -73,7 +73,7 @@ class MyRecipeViewModel : ViewModel() {
                         Application.instance.getString(R.string.RoseHip) + "," +
                         Application.instance.getString(R.string.Stevia),
                 "5,3,2",
-                R.drawable.default_hibiscus,
+                R.mipmap.default_hibiscus,
                 "酸味と甘みがあるハーブティー",
                 ""
             ),
@@ -84,7 +84,7 @@ class MyRecipeViewModel : ViewModel() {
                         Application.instance.getString(R.string.LemonMyrtle) + "," +
                         Application.instance.getString(R.string.Stevia),
                 "5,3,2",
-                R.drawable.default_lemongrass,
+                R.mipmap.default_lemongrass,
                 "レモンの香りで癒されるハーブティー",
                 ""
             ),
@@ -96,7 +96,7 @@ class MyRecipeViewModel : ViewModel() {
                         Application.instance.getString(R.string.LemonVerbena) + "," +
                         Application.instance.getString(R.string.Stevia),
                 "4,3,2,1",
-                R.drawable.default_rooibos,
+                R.mipmap.default_rooibos,
                 "ごくごく飲めるハーブティー",
                 ""
             )
