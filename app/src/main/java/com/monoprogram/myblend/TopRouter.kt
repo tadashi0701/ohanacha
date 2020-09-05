@@ -1,29 +1,28 @@
 package com.monoprogram.myblend
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
+import androidx.fragment.app.FragmentActivity
 import com.monoprogram.myblend.presentation.top.blend.top.MyBlend.MyRecipeFragment
 import com.monoprogram.myblend.presentation.top.blend.top.TopFragment
 import javax.inject.Inject
 
-interface TopRoute {
-    fun showTopFragment()
-    fun showCreateBledFragment()
-}
+class TopRouter @Inject constructor(context: Context) {
 
-class TopRouter @Inject constructor(
-) : TopRoute, AppCompatActivity() {
+    private val context = context as FragmentActivity
 
-    override fun showTopFragment() {
-        supportFragmentManager.beginTransaction()
-            .add(R.id.container,
+    fun showTopFragment() {
+        context.supportFragmentManager.beginTransaction()
+            .add(
+                R.id.container,
                 TopFragment()
             )
             .commit()
     }
 
-    override fun showCreateBledFragment() {
-        supportFragmentManager.beginTransaction()
-            .add(R.id.container,
+    fun showCreateBledFragment() {
+        context.supportFragmentManager.beginTransaction()
+            .add(
+                R.id.container,
                 MyRecipeFragment()
             )
             .commit()
