@@ -10,12 +10,18 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
+import com.monoprogram.myblend.TopRouter
 import com.monoprogram.myblend.databinding.FragmentDefaultRecipeBinding
 import com.monoprogram.myblend.entity.Blend
 import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
-import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class DefaultRecipeFragment : Fragment() {
+
+    @Inject
+    lateinit var router: TopRouter
 
     private lateinit var viewModel: MyRecipeViewModel
     private lateinit var binding: FragmentDefaultRecipeBinding
@@ -43,7 +49,8 @@ class DefaultRecipeFragment : Fragment() {
     }
 
     private fun createAdapter(blendInfo: List<Blend>) {
-        val recyclerView = view?.findViewById<RecyclerView>(R.id.default_recipe_recycler_view) ?: return
+        val recyclerView =
+            view?.findViewById<RecyclerView>(R.id.default_recipe_recycler_view) ?: return
         val adapter =
             DefaultRecipeAdapter(
                 blendInfo
@@ -64,13 +71,7 @@ class DefaultRecipeFragment : Fragment() {
                 blendInfo[position].herbValue.split(",").also { list ->
                     list.forEach { value.add(it.toInt()) }
                 }
-
-                activity?.supportFragmentManager?.beginTransaction()?.add(
-                    R.id.container, BlendAmountFragment.newInstance(
-                        herb,
-                        value
-                    )
-                )?.commit()
+                router.showBlendAmountFragment(herb, value)
             }
         })
     }

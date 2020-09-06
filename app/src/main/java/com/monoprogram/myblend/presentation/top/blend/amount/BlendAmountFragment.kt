@@ -15,13 +15,18 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
+import com.monoprogram.myblend.TopRouter
 import com.monoprogram.myblend.databinding.FragmentBlendAmountBinding
 import com.monoprogram.myblend.entity.Herb
 import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
-import com.monoprogram.myblend.presentation.top.blend.top.TopFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class BlendAmountFragment : Fragment() {
+
+    @Inject
+    lateinit var router: TopRouter
 
     private lateinit var viewModel: MyRecipeViewModel
     private lateinit var binding: FragmentBlendAmountBinding
@@ -80,11 +85,7 @@ class BlendAmountFragment : Fragment() {
                 it.setNegativeButton("CANCEL", null)
                 it.setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
                     viewModel.onClickedSave(herbList, valueList, edit.text.toString())
-                    // ブレンド量調整の画面を削除する
-                    activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
-                    // トップ画面を更新する
-                    activity?.supportFragmentManager?.beginTransaction()
-                        ?.replace(R.id.container, TopFragment())?.commit()
+                    router.removeBlendAmountFragment()
                 })
                 it.show()
             }
@@ -99,9 +100,7 @@ class BlendAmountFragment : Fragment() {
         // 分量確認ボタン
         binding.btnAmount.setOnClickListener {
             if (!checkPercent()) return@setOnClickListener
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.add(R.id.container, AmountConfirmFragment.newInstance(herbList, valueList))
-                ?.commit()
+            router.showAmountConfirmFragment(herbList, valueList)
         }
     }
 

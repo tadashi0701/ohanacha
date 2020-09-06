@@ -12,12 +12,19 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
+import com.monoprogram.myblend.TopRouter
 import com.monoprogram.myblend.databinding.FragmentMyBlendBinding
 import com.monoprogram.myblend.entity.Blend
 import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
 import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MyRecipeFragment : Fragment() {
+
+    @Inject
+    lateinit var router: TopRouter
 
     private lateinit var viewModel: MyRecipeViewModel
     private lateinit var binding: FragmentMyBlendBinding
@@ -75,13 +82,7 @@ class MyRecipeFragment : Fragment() {
                 blendInfo[position].herbValue.split(",").also { list ->
                     list.forEach { value.add(it.toInt()) }
                 }
-
-                activity?.supportFragmentManager?.beginTransaction()?.add(
-                    R.id.container, BlendAmountFragment.newInstance(
-                        herb,
-                        value
-                    )
-                )?.commit()
+                router.showBlendAmountFragment(herb, value)
             }
 
             override fun onItemDeleteClickListener(position: Int) {

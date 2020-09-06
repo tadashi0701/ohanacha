@@ -12,12 +12,18 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
+import com.monoprogram.myblend.TopRouter
 import com.monoprogram.myblend.databinding.FragmentHerbListBinding
 import com.monoprogram.myblend.entity.Herb
 import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
-import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class HerbListFragment : Fragment() {
+
+    @Inject
+    lateinit var router: TopRouter
 
     private lateinit var binding: FragmentHerbListBinding
     private lateinit var viewModel: MyRecipeViewModel
@@ -64,14 +70,7 @@ class HerbListFragment : Fragment() {
             selectedList.forEach { _ ->
                 valueList.add(0)
             }
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.add(
-                    R.id.container,
-                    BlendAmountFragment.newInstance(
-                        selectedList,
-                        valueList
-                    )
-                )?.commit()
+            router.showBlendAmountFragment(selectedList, valueList)
         }
     }
 
