@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.blend.top.HerbList
+package com.monoprogram.myblend.presentations.top.HerbList
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -15,7 +15,7 @@ import com.monoprogram.myblend.R
 import com.monoprogram.myblend.TopRouter
 import com.monoprogram.myblend.databinding.FragmentHerbListBinding
 import com.monoprogram.myblend.entity.Herb
-import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
+import com.monoprogram.myblend.presentations.MyRecipeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

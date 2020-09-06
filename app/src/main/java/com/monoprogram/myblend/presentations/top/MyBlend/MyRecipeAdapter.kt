@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.blend.top.MyBlend
+package com.monoprogram.myblend.presentations.top.MyBlend
 
 import android.view.LayoutInflater
 import android.view.View

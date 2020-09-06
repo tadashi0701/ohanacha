@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.blend.amount
+package com.monoprogram.myblend.presentations.amount
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -18,7 +18,7 @@ import com.monoprogram.myblend.R
 import com.monoprogram.myblend.TopRouter
 import com.monoprogram.myblend.databinding.FragmentBlendAmountBinding
 import com.monoprogram.myblend.entity.Herb
-import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
+import com.monoprogram.myblend.presentations.MyRecipeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

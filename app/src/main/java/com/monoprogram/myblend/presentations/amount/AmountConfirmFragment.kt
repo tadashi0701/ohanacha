@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.blend.amount
+package com.monoprogram.myblend.presentations.amount
 
 import android.os.Bundle
 import android.text.Editable
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.monoprogram.myblend.R
 import com.monoprogram.myblend.databinding.FragmentAmountConfirmBinding
 import com.monoprogram.myblend.entity.Herb
-import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
+import com.monoprogram.myblend.presentations.MyRecipeViewModel
 
 class AmountConfirmFragment : Fragment() {
 

@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@color/mainColor"
     android:orientation="vertical"
-    tools:context=".presentation.top.blend.amount.AmountConfirmFragment">
+    tools:context=".presentations.amount.AmountConfirmFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header_view"

@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.blend.amount
+package com.monoprogram.myblend.presentations.amount
 
 import android.util.Log
 import android.view.LayoutInflater

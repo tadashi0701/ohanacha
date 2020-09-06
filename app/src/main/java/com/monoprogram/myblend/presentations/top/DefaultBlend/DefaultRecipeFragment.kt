@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.blend.top.DefaultBlend
+package com.monoprogram.myblend.presentations.top.DefaultBlend
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,7 @@ import com.monoprogram.myblend.R
 import com.monoprogram.myblend.TopRouter
 import com.monoprogram.myblend.databinding.FragmentDefaultRecipeBinding
 import com.monoprogram.myblend.entity.Blend
-import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
+import com.monoprogram.myblend.presentations.MyRecipeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

@@ -2,9 +2,9 @@ package com.monoprogram.myblend
 
 import android.content.Context
 import androidx.fragment.app.FragmentActivity
-import com.monoprogram.myblend.presentation.top.blend.amount.AmountConfirmFragment
-import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
-import com.monoprogram.myblend.presentation.top.blend.top.TopFragment
+import com.monoprogram.myblend.presentations.amount.AmountConfirmFragment
+import com.monoprogram.myblend.presentations.amount.BlendAmountFragment
+import com.monoprogram.myblend.presentations.top.TopFragment
 import javax.inject.Inject
 
 class TopRouter @Inject constructor(context: Context) {

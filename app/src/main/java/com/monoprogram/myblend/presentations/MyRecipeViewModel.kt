@@ -1,4 +1,4 @@
-package com.monoprogram.myblend.presentation.top.blend
+package com.monoprogram.myblend.presentations
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

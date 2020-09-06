@@ -1,13 +1,13 @@
-package com.monoprogram.myblend.presentation.top.blend.top
+package com.monoprogram.myblend.presentations.top
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.monoprogram.myblend.Application
 import com.monoprogram.myblend.R
-import com.monoprogram.myblend.presentation.top.blend.top.HerbList.HerbListFragment
-import com.monoprogram.myblend.presentation.top.blend.top.DefaultBlend.DefaultRecipeFragment
-import com.monoprogram.myblend.presentation.top.blend.top.MyBlend.MyRecipeFragment
+import com.monoprogram.myblend.presentations.top.HerbList.HerbListFragment
+import com.monoprogram.myblend.presentations.top.DefaultBlend.DefaultRecipeFragment
+import com.monoprogram.myblend.presentations.top.MyBlend.MyRecipeFragment
 
 @Suppress("DEPRECATION")
 class PageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {

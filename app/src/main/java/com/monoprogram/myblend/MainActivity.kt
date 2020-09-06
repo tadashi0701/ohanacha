@@ -8,9 +8,9 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
-import com.monoprogram.myblend.presentation.top.blend.MyRecipeViewModel
-import com.monoprogram.myblend.presentation.top.blend.amount.AmountConfirmFragment
-import com.monoprogram.myblend.presentation.top.blend.amount.BlendAmountFragment
+import com.monoprogram.myblend.presentations.MyRecipeViewModel
+import com.monoprogram.myblend.presentations.amount.AmountConfirmFragment
+import com.monoprogram.myblend.presentations.amount.BlendAmountFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
