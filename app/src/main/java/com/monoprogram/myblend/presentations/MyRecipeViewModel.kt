@@ -17,6 +17,7 @@ class MyRecipeViewModel : ViewModel() {
     val herbInfo: LiveData<List<Herb>> get() = _herbInfo
     val blendInfo: LiveData<List<Blend>> get() = _blendInfo
     val defaultBlend: LiveData<List<Blend>> get() = _defaultBlend
+    val detailHerbInfo: LiveData<Herb> get() = _detailHerbInfo
 
     private val herbDao = Application.database.herbDao()
     private val blendDao = Application.database.blendDao()
@@ -24,31 +25,10 @@ class MyRecipeViewModel : ViewModel() {
     private val _herbInfo = MutableLiveData<List<Herb>>()
     private val _blendInfo = MutableLiveData<List<Blend>>()
     private val _defaultBlend = MutableLiveData<List<Blend>>()
+    private val _detailHerbInfo = MutableLiveData<Herb>()
+
     private val selectList: ArrayList<Herb> = arrayListOf()
 
-    private val names = arrayListOf(
-        Application.instance.getString(R.string.RoseHip),
-        Application.instance.getString(R.string.Hibiscus),
-        Application.instance.getString(R.string.Lemongrass),
-        Application.instance.getString(R.string.Heath),
-        Application.instance.getString(R.string.Bardock),
-        Application.instance.getString(R.string.Stevia),
-        Application.instance.getString(R.string.LemonPeople),
-        Application.instance.getString(R.string.LemonMyrtle),
-        Application.instance.getString(R.string.Rooibos),
-        Application.instance.getString(R.string.Chamomile),
-        Application.instance.getString(R.string.Mint),
-        Application.instance.getString(R.string.Raspberry),
-        Application.instance.getString(R.string.LemonVerbena),
-        Application.instance.getString(R.string.DandyLion)
-    )
-    private val photos = arrayListOf(
-        R.mipmap.rosehip, R.mipmap.hibiscus, R.mipmap.lemongrass,
-        R.mipmap.heath, R.mipmap.bardock, R.mipmap.stebia,
-        R.mipmap.lemonpeople, R.mipmap.lemonmyrtle, R.mipmap.rooibos,
-        R.mipmap.camomile, R.mipmap.mint, R.mipmap.raspberry, R.mipmap.lemonverbena,
-        R.mipmap.dandylion
-    )
 
     private val defaultInitRecipe: List<Blend> =
         listOf(
@@ -105,12 +85,21 @@ class MyRecipeViewModel : ViewModel() {
     fun onCreateHerbInfo() {
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.Default) {
-                if (herbDao.getAll().isEmpty()) {
-                    names.forEachIndexed { index, name ->
-                        herbDao.insert(Herb(0, name, "香りが良い", photos[index]))
-                    }
+                if (herbDao.getAll().isNotEmpty()) {
+                    herbDao.deleteAll()
+                }
+                names.forEachIndexed { index, name ->
+                    herbDao.insert(Herb(0, name, description[index], photos[index]))
                 }
                 _herbInfo.postValue(herbDao.getAll())
+            }
+        }
+    }
+
+    fun onDetailHerbInfo(name: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            withContext(Dispatchers.Default) {
+                _detailHerbInfo.postValue(herbDao.getHerb(name))
             }
         }
     }
@@ -169,5 +158,48 @@ class MyRecipeViewModel : ViewModel() {
                 _blendInfo.postValue(blendDao.getAll())
             }
         }
+    }
+
+    // ハーブ情報
+    companion object {
+        private val names = arrayListOf(
+            Application.instance.getString(R.string.RoseHip),
+            Application.instance.getString(R.string.Hibiscus),
+            Application.instance.getString(R.string.Lemongrass),
+            Application.instance.getString(R.string.Heath),
+            Application.instance.getString(R.string.Bardock),
+            Application.instance.getString(R.string.Stevia),
+            Application.instance.getString(R.string.LemonPeople),
+            Application.instance.getString(R.string.LemonMyrtle),
+            Application.instance.getString(R.string.Rooibos),
+            Application.instance.getString(R.string.Chamomile),
+            Application.instance.getString(R.string.Mint),
+            Application.instance.getString(R.string.Raspberry),
+            Application.instance.getString(R.string.LemonVerbena),
+            Application.instance.getString(R.string.DandyLion)
+        )
+        private val photos = arrayListOf(
+            R.mipmap.rosehip, R.mipmap.hibiscus, R.mipmap.lemongrass,
+            R.mipmap.heath, R.mipmap.bardock, R.mipmap.stebia,
+            R.mipmap.lemonpeople, R.mipmap.lemonmyrtle, R.mipmap.rooibos,
+            R.mipmap.camomile, R.mipmap.mint, R.mipmap.raspberry, R.mipmap.lemonverbena,
+            R.mipmap.dandylion
+        )
+        private val description = arrayListOf(
+            Application.instance.getString(R.string.RoseHipDescroption),
+            Application.instance.getString(R.string.HibiscusDescroption),
+            Application.instance.getString(R.string.LemongrassDescroption),
+            Application.instance.getString(R.string.HeathDescroption),
+            Application.instance.getString(R.string.BardockDescroption),
+            Application.instance.getString(R.string.SteviaDescroption),
+            Application.instance.getString(R.string.LemonPeopleDescroption),
+            Application.instance.getString(R.string.LemonMyrtleDescroption),
+            Application.instance.getString(R.string.RooibosDescroption),
+            Application.instance.getString(R.string.ChamomileDescroption),
+            Application.instance.getString(R.string.MintDescroption),
+            Application.instance.getString(R.string.RaspberryDescroption),
+            Application.instance.getString(R.string.LemonVerbenaDescroption),
+            Application.instance.getString(R.string.DandyLionDescroption)
+        )
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.fragment.app.FragmentActivity
 import com.monoprogram.myblend.presentations.amount.AmountConfirmFragment
 import com.monoprogram.myblend.presentations.amount.BlendAmountFragment
+import com.monoprogram.myblend.presentations.detail.HerbDetailFragment
 import com.monoprogram.myblend.presentations.top.TopFragment
 import javax.inject.Inject
 
@@ -40,6 +41,12 @@ class TopRouter @Inject constructor(context: Context) {
     fun showAmountConfirmFragment(herbList: ArrayList<String>, valueList: ArrayList<Int>) {
         context.supportFragmentManager.beginTransaction()
             .add(R.id.container, AmountConfirmFragment.newInstance(herbList, valueList))
+            .commit()
+    }
+
+    fun showHerbDetailFragment(herbName: String) {
+        context.supportFragmentManager.beginTransaction()
+            .add(R.id.container, HerbDetailFragment.newInstance(herbName))
             .commit()
     }
 }

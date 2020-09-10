@@ -90,6 +90,10 @@ class HerbListFragment : Fragment() {
             override fun onItemClickListener(list: ArrayList<String>) {
                 selectedList = list
             }
+
+            override fun onHerbImageClickListener(position: Int) {
+                router.showHerbDetailFragment(herbInfo[position].herbName)
+            }
         })
     }
 }

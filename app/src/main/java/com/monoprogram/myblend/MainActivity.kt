@@ -11,6 +11,7 @@ import com.google.android.gms.ads.MobileAds
 import com.monoprogram.myblend.presentations.MyRecipeViewModel
 import com.monoprogram.myblend.presentations.amount.AmountConfirmFragment
 import com.monoprogram.myblend.presentations.amount.BlendAmountFragment
+import com.monoprogram.myblend.presentations.detail.HerbDetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -48,9 +49,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.container) ?: return
-        when {
-            fragment is AmountConfirmFragment ||
-                    fragment is BlendAmountFragment -> {
+        when (fragment) {
+            is AmountConfirmFragment,
+            is BlendAmountFragment,
+            is HerbDetailFragment -> {
                 supportFragmentManager.beginTransaction().remove(fragment).commit()
             }
             else -> {

@@ -41,10 +41,12 @@ class HerbListAdapter internal constructor(
             holder.selected.isSelected = it != null
         }
 
-        // ハーブ選択を検知
+        // ハーブ画像を押下を検知
         holder.imageView.setOnClickListener {
-            updateSelected(holder)
+            listener.onHerbImageClickListener(position)
         }
+        
+        // ハーブ選択を検知
         holder.selected.setOnClickListener { select ->
             updateSelected(holder)
         }
@@ -68,6 +70,7 @@ class HerbListAdapter internal constructor(
     //インターフェースの作成
     interface OnItemClickListener {
         fun onItemClickListener(list: ArrayList<String>)
+        fun onHerbImageClickListener(position: Int)
     }
 
     // リスナー
