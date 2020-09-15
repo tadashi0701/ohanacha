@@ -22,14 +22,9 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var mAdView: AdView
 
-    private lateinit var viewModel: MyRecipeViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        // viewmodelの定義
-        viewModel = ViewModelProviders.of(this).get(MyRecipeViewModel::class.java)
 
         // 表示画面の定義
         findViewById<View>(android.R.id.content).systemUiVisibility =
