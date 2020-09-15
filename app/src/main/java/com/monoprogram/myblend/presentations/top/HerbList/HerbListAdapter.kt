@@ -45,9 +45,12 @@ class HerbListAdapter internal constructor(
         holder.imageView.setOnClickListener {
             listener.onHerbImageClickListener(position)
         }
-        
+
         // ハーブ選択を検知
-        holder.selected.setOnClickListener { select ->
+        holder.selected.setOnClickListener { _ ->
+            updateSelected(holder)
+        }
+        holder.textView.setOnClickListener { _ ->
             updateSelected(holder)
         }
     }
