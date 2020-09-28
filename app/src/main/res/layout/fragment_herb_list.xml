@@ -24,8 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/text_margin"
         android:layout_marginBottom="@dimen/text_margin"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/colorAccentAmount"
         android:src="@mipmap/icon_list"
+        app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

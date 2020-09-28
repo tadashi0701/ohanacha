@@ -60,9 +60,11 @@ class MyRecipeFragment : Fragment() {
     }
 
     private fun createAdapter(blendInfo: List<Blend>) {
+        val c = context ?: return
         val recyclerView = view?.findViewById<RecyclerView>(R.id.my_recipe_recycler_view) ?: return
         val adapter =
             MyRecipeAdapter(
+                c,
                 blendInfo
             )
         recyclerView.layoutManager = LinearLayoutManager(activity)
