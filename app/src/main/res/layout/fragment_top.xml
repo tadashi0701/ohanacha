@@ -35,6 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/main_image"
         app:tabBackground="@drawable/tab_selector"
         app:tabIndicatorColor="@android:color/transparent"
+        app:tabRippleColor="@android:color/transparent"
         app:tabSelectedTextColor="@android:color/white"
         app:tabTextAppearance="@style/TabText">
 
