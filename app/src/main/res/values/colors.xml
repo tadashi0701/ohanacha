@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#e3adc1</color>
+    <color name="colorAccent">#942343</color>
+    <color name="herbValue">#dc143c</color>
+    <color name="mainColor">#fef9fb</color>
+    <color name="blendColor">#a9a9a9</color>
+    <color name="colorAccentAmount">#e73562</color>
+</resources>

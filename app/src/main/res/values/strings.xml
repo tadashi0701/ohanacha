@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">MyBlend</string>
+    <string name="myBlend">MyBlend</string>
+    <string name="default_recipe">Default Recipe</string>
+    <string name="my_recipe">My Recipe</string>
+    <string name="previous_recipe">Previous Recipe</string>
+    <string name="msg_create_my_recipe">Create My Recipe</string>
+    <string name="recipe_description">Herb amount</string>
+    <string name="select_base_herb">Select Base Herb</string>
+    <string name="msg_blend_save">Save Blend.\nCreate Blend Name</string>
+    <string name="msg_cannot_amount">Can not amount</string>
+    <string name="msg_delete_blend">Delete blend?</string>
+    <string name="quantity_confirm">Quantity confirmation</string>
+    <string name="quantity_confirm_description">cups of tea.</string>
+    <string name="msg_100_percent">Please 100%</string>
+    <string name="msg_select_herb">Please select herb</string>
+    <string name="herb_description">Herb description</string>
+    <!-- ハーブ名 -->
+    <string name="RoseHip">RoseHip</string>
+    <string name="Hibiscus">Hibiscus</string>
+    <string name="Lemongrass">Lemongrass</string>
+    <string name="Heath">Heath</string>
+    <string name="Bardock">Bardock</string>
+    <string name="Stevia">Stevia</string>
+    <string name="LemonPeople">LemonPeople</string>
+    <string name="LemonMyrtle">LemonMyrtle</string>
+    <string name="Rooibos">Rooibos</string>
+    <string name="Chamomile">Chamomile</string>
+    <string name="Mint">Mint</string>
+    <string name="Raspberry">Raspberry</string>
+    <string name="LemonVerbena">LemonVerbena</string>
+    <string name="DandyLion">DandyLion</string>
+    <!-- ハーブ説明 -->
+    <string name="RoseHipDescroption">RoseHip</string>
+    <string name="HibiscusDescroption">Hibiscus</string>
+    <string name="LemongrassDescroption">Lemongrass</string>
+    <string name="HeathDescroption">Heath</string>
+    <string name="BardockDescroption">Bardock</string>
+    <string name="SteviaDescroption">Stevia</string>
+    <string name="LemonPeopleDescroption">LemonPeople</string>
+    <string name="LemonMyrtleDescroption">LemonMyrtle</string>
+    <string name="RooibosDescroption">Rooibos</string>
+    <string name="ChamomileDescroption">Chamomile</string>
+    <string name="MintDescroption">Mint</string>
+    <string name="RaspberryDescroption">Raspberry</string>
+    <string name="LemonVerbenaDescroption">LemonVerbena</string>
+    <string name="DandyLionDescroption">DandyLion</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

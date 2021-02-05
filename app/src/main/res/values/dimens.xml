@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="my_blend_fb">60dp</dimen>
+</resources>

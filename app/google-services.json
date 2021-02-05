@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "577778125115",
+    "firebase_url": "https://myblend-d47bf.firebaseio.com",
+    "project_id": "myblend-d47bf",
+    "storage_bucket": "myblend-d47bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577778125115:android:fb0909d84b8e61c2614f1e",
+        "android_client_info": {
+          "package_name": "com.monoprogram.myblend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577778125115-por2f3nhjp6fpt39nkhqnom779ruo089.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlM1d3MEF2RQMrUlNct3fL1Uk0ZTzTWok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577778125115-por2f3nhjp6fpt39nkhqnom779ruo089.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

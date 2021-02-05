@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_my_blend"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:background="@drawable/shape_rounded_white">
+
+    <TextView
+        android:id="@+id/text_blend_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin"
+        android:layout_marginTop="5dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/my_blend_recycler_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/layout_my_blend" />
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/text_margin"
+        android:layout_marginBottom="@dimen/text_margin"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/my_blend_recycler_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_blend_name" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_blend_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_blend_name" />
+
+    <ImageButton
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_oval_accent"
+        android:padding="6dp"
+        android:rotation="-180"
+        android:src="@mipmap/delete"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_top"
+        app:layout_constraintLeft_toLeftOf="@+id/btn_top"
+        app:layout_constraintRight_toRightOf="@+id/btn_top"
+        app:layout_constraintTop_toTopOf="@+id/btn_top" />
+
+    <ImageButton
+        android:id="@+id/btn_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_oval_accent"
+        android:padding="6dp"
+        android:rotation="-180"
+        android:src="@mipmap/share"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_top"
+        app:layout_constraintLeft_toLeftOf="@+id/btn_top"
+        app:layout_constraintRight_toRightOf="@+id/btn_top"
+        app:layout_constraintTop_toTopOf="@+id/btn_top" />
+
+    <ImageButton
+        android:id="@+id/btn_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_oval_accent"
+        android:padding="6dp"
+        android:rotation="-180"
+        android:src="@mipmap/edit"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_top"
+        app:layout_constraintLeft_toLeftOf="@+id/btn_top"
+        app:layout_constraintRight_toRightOf="@+id/btn_top"
+        app:layout_constraintTop_toTopOf="@+id/btn_top" />
+
+    <ImageButton
+        android:id="@+id/btn_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/shape_oval_gray"
+        android:padding="6dp"
+        android:src="@mipmap/setting"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/separator"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
